@@ -1,0 +1,3589 @@
+﻿schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Account {
+  auditableValues: LinkedHashMap_String_StringScalar
+  baseInstrument: Security
+  bic: String
+  calendar: String
+  cashAccount: Boolean
+  category: String
+  currency: Security
+  excludeBalance: Boolean
+  fixing: Float!
+  groupTag(tagGroup: String): String
+  hideZero: Boolean
+  id: Long
+  issuer: Contact
+  mandateReference: String
+  name: String
+  number: String
+  number2: String
+  portfolio: Portfolio
+  priority: Int!
+  shared: Boolean
+  sharedAll: Boolean
+  sharedSub: Boolean
+  spread: Float!
+  tags: String
+  tagsAsSet: [String]
+  version: Int
+  visibility: Boolean
+}
+
+type AccountItem {
+  account: Account
+  accountId: Long
+  accountName: String
+  accruedProfit: Float!
+  amountAfterOpenTradeOrders: Float!
+  amountBeforeUnsettledTransactions: Float!
+  amountDecimalCount: Int!
+  amountFromOpenTradeOrders: Float!
+  amountFromSentTradeOrders: Float!
+  balance: Float!
+  balanceAccCurr: Float!
+  balancePv: Float!
+  balancePvUnitPrice: Float!
+  balanceStart: Float!
+  balanceUnitPrice: Float!
+  balanceUnitPriceStart: Float!
+  cashflow: Float!
+  cost: Float!
+  currency: Security
+  currencyId: Long
+  expectedAmount: Float!
+  expectedAmountCalculated: Boolean!
+  expectedTradeAmount: Float!
+  fxRate(quoteCurrency: String): Float
+  getdAccruedProfit: Float!
+  getdBalance: Float!
+  getdBalancePv: Float!
+  getdCost: Float!
+  getdExPost3rdCostCat1: Float!
+  getdExPost3rdCostCat10: Float!
+  getdExPost3rdCostCat2: Float!
+  getdExPost3rdCostCat3: Float!
+  getdExPost3rdCostCat4: Float!
+  getdExPost3rdCostCat5: Float!
+  getdExPost3rdCostCat6: Float!
+  getdExPost3rdCostCat7: Float!
+  getdExPost3rdCostCat8: Float!
+  getdExPost3rdCostCat9: Float!
+  getdExPostPfCostCat1: Float!
+  getdExPostPfCostCat10: Float!
+  getdExPostPfCostCat2: Float!
+  getdExPostPfCostCat3: Float!
+  getdExPostPfCostCat4: Float!
+  getdExPostPfCostCat5: Float!
+  getdExPostPfCostCat6: Float!
+  getdExPostPfCostCat7: Float!
+  getdExPostPfCostCat8: Float!
+  getdExPostPfCostCat9: Float!
+  getdExPostSecCostCat1: Float!
+  getdExPostSecCostCat10: Float!
+  getdExPostSecCostCat2: Float!
+  getdExPostSecCostCat3: Float!
+  getdExPostSecCostCat4: Float!
+  getdExPostSecCostCat5: Float!
+  getdExPostSecCostCat6: Float!
+  getdExPostSecCostCat7: Float!
+  getdExPostSecCostCat8: Float!
+  getdExPostSecCostCat9: Float!
+  getdOtherCost: Float!
+  id: Long
+  indexedValue: Float!
+  indexedValueChange: Float!
+  indexedValueStart: Float!
+  key: String
+  marketDate: String
+  negCashflow: Float!
+  negNetCashflow: Float!
+  negNetCashflowSec: Float!
+  netCashflow: Float!
+  netCashflowSec: Float!
+  otherCost: Float!
+  portfolio: Portfolio
+  portfolioId: Long
+  portfolioReport: PortfolioReport
+  portfolioReportId: Long
+  "Finds purchase lots that are linked to the given AccountItem. The filterParams parameter can be provided to further customize the result."
+  portfolioReportSubItems(filterParams: SubItemFilterParamsInput): [PortfolioReportSubItem]
+  posCashflow: Float!
+  posNetCashflow: Float!
+  posNetCashflowSec: Float!
+  previousAccountItem: AccountItem
+  shareOfPortfolio: Float!
+  shareOfPortfolioStart: Float!
+  tradeAmountAfterOpenTradeOrders: Float!
+  tradeAmountBeforeUnsettledTransactions: Float!
+  tradeAmountFromOpenTradeOrders: Float!
+  tradeAmountFromSentTradeOrders: Float!
+  transactions: [Transaction]
+  version: Int
+}
+
+type AccountSubItem {
+  account: Account
+  accountId: Long
+  amountDecimalCount: Int!
+  cashflow: Float!
+  cashflowAccCurr: Float!
+  cost: Float!
+  costAccCurr: Float!
+  currency: Security
+  currencyId: Long
+  exPost3rdCostCat1: Float!
+  exPost3rdCostCat10: Float!
+  exPost3rdCostCat2: Float!
+  exPost3rdCostCat3: Float!
+  exPost3rdCostCat4: Float!
+  exPost3rdCostCat5: Float!
+  exPost3rdCostCat6: Float!
+  exPost3rdCostCat7: Float!
+  exPost3rdCostCat8: Float!
+  exPost3rdCostCat9: Float!
+  exPostPfCostCat1: Float!
+  exPostPfCostCat10: Float!
+  exPostPfCostCat2: Float!
+  exPostPfCostCat3: Float!
+  exPostPfCostCat4: Float!
+  exPostPfCostCat5: Float!
+  exPostPfCostCat6: Float!
+  exPostPfCostCat7: Float!
+  exPostPfCostCat8: Float!
+  exPostPfCostCat9: Float!
+  exPostSecCostCat1: Float!
+  exPostSecCostCat10: Float!
+  exPostSecCostCat2: Float!
+  exPostSecCostCat3: Float!
+  exPostSecCostCat4: Float!
+  exPostSecCostCat5: Float!
+  exPostSecCostCat6: Float!
+  exPostSecCostCat7: Float!
+  exPostSecCostCat8: Float!
+  exPostSecCostCat9: Float!
+  extInfo: String
+  fxRate: Float!
+  fxRateAccCurr: Float!
+  id: Long
+  intInfo: String
+  itemCode: String
+  itemName: String
+  key: String
+  netCashflow: Float!
+  netCashflowAccCurr: Float!
+  otherCost: Float!
+  portfolio: Portfolio
+  portfolioId: Long
+  profit: Float!
+  profitAccCurr: Float!
+  settlementDate: String
+  transactionDate: String
+  transactionId: String
+  version: Int
+}
+
+type Address {
+  address1: String
+  address2: String
+  city: String
+  contact: Contact
+  country: String
+  electronicCommunication: Boolean!
+  email: String
+  fax: String
+  id: Long
+  marketingCommunication: Boolean!
+  name: String
+  phone1: String
+  phone2: String
+  type: String
+  version: Int
+  zipCode: String
+}
+
+type Allocation {
+  date: String
+  group: Group
+  id: Long
+  sector: AssetType
+  security: Security
+  share: Float!
+  version: Int
+}
+
+type AnalysisDTO {
+  allAnalyticsTimeSeries: Map_String_GrouppedAnalyticsTimeSeriesDTOScalar
+  allGrouppedAnalytics: Map_String_GrouppedAnalyticsDTOScalar
+  analyticsTimeSeries(key: String): GrouppedAnalyticsTimeSeriesDTO
+  grouppedAnalytics(key: String): GrouppedAnalyticsDTO
+  properties: Map_String_ObjectScalar
+}
+
+input AnalysisParamsDTOInput {
+  endDate: String
+  includeDrilldownPositions: Boolean = false
+  includeOnlyCashAccounts: Boolean = true
+  paramsSet: [GrouppedAnalyticsParamsDTOInput]
+  pfIds: [Long]
+  startDate: String
+}
+
+type AnalyticsPortfolioDTO {
+  benchmarkId: Long
+  countryCode: String
+  countryName: String
+  currencyCode: String
+  currencyId: Long
+  currencyName: String
+  currencyNames: String
+  currencyNamesAsMap: Map_String_StringScalar
+  id: Long
+  juridicalCode: String
+  juridicalName: String
+  name: String
+  parentPortfolioId: Long
+  parentPortfolioIds: String
+  parentPortfolioIdsSet: [Long]
+  parentPortfolioName: String
+  parentPortfolioShortName: String
+  portfolioTypeCode: String
+  portfolioTypeName: String
+  primaryContactId: String
+  primaryContactName: String
+  properties: Map_String_ObjectScalar
+  shortName: String
+  tags: String
+}
+
+type AnalyticsSecurityDTO {
+  accrualCalendar: String
+  assetCategory: String
+  assetLiability: String
+  baseType: String
+  callDate: String
+  class1Code: String
+  class1Name: String
+  class1Names: String
+  class1NamesAsMap: Map_String_StringScalar
+  class2Code: String
+  class2Name: String
+  class2Names: String
+  class2NamesAsMap: Map_String_StringScalar
+  class3Code: String
+  class3Name: String
+  class3Names: String
+  class3NamesAsMap: Map_String_StringScalar
+  class4Code: String
+  class4Name: String
+  class4Names: String
+  class4NamesAsMap: Map_String_StringScalar
+  class5Code: String
+  class5Name: String
+  class5Names: String
+  class5NamesAsMap: Map_String_StringScalar
+  convexity: Float!
+  countryCode: String
+  countryName: String
+  countryNames: String
+  countryNamesAsMap: Map_String_StringScalar
+  coupon: Float!
+  couponFrequency: String
+  currencyCode: String
+  currencyName: String
+  currencyNames: String
+  currencyNamesAsMap: Map_String_StringScalar
+  exAnteSecCostCat1: Float!
+  exAnteSecCostCat10: Float!
+  exAnteSecCostCat2: Float!
+  exAnteSecCostCat3: Float!
+  exAnteSecCostCat4: Float!
+  exAnteSecCostCat5: Float!
+  exAnteSecCostCat6: Float!
+  exAnteSecCostCat7: Float!
+  exAnteSecCostCat8: Float!
+  exAnteSecCostCat9: Float!
+  exchangeCode: String
+  exchangeName: String
+  id: Long
+  isinCode: String
+  issueDate: String
+  issuePrice: Float!
+  issuerCode: String
+  issuerName: String
+  keyFigureValues: HashMap_String_CustomColumnValueDTOScalar
+  linkedPortfolioId: Long
+  linkedSecurity: AnalyticsSecurityDTO
+  linkedSecurityId: Long
+  macaulayDuration: Float!
+  maturityDate: String
+  maturityPrice: Float!
+  modifiedDuration: Float!
+  name: String
+  names: String
+  namesAsMap: Map_String_StringScalar
+  outstandingAmount: Float!
+  parentPositionHierarchy: Map_Integer_StringScalar
+  posName: String
+  posNames: String
+  posNamesAsMap: Map_String_StringScalar
+  posSecurityCode: String
+  price: Float!
+  priceSecurityBaseType: String
+  priceSecurityCode: String
+  priceSecurityCurrencyCode: String
+  priceSecurityCurrencyName: String
+  priceSecurityName: String
+  properties: Map_String_ObjectScalar
+  rating: String
+  securityCode: String
+  securityId: Long
+  securitySubTypeCode: String
+  securitySubTypeName: String
+  securityTypeCode: String
+  securityTypeName: String
+  securityTypeNames: String
+  securityTypeNamesAsMap: Map_String_StringScalar
+  securityTypeOrderNumber: Int!
+  settlementCode: String
+  settlementName: String
+  tags: String
+  tagsAsList: [String]
+  yieldToMaturity: Float!
+}
+
+type ArchiveData {
+  content: String
+  date: String
+  id: Long
+  tag: String
+}
+
+type Asset {
+  assetTypes: [AssetType]
+  code: String
+  group: Group
+  id: Long
+  name: String
+  names: String
+  namesAsMap: Map_String_StringScalar
+  priority: Int!
+  version: Int
+}
+
+type AssetType {
+  asset: Asset
+  benchmark: Benchmark
+  code: String
+  expectedReturn: Float!
+  id: Long
+  name: String
+  names: String
+  namesAsMap: Map_String_StringScalar
+  priority: Int!
+  status: String
+  version: Int
+  volatility: Float!
+}
+
+type Benchmark {
+  benchmarkPositions: [BenchmarkPosition]
+  benchmarkPositionsByDate: NavigableMap_Date_List_BenchmarkPositionScalar
+  general: Boolean!
+  id: Long
+  linkedPortfolio: Portfolio
+  name: String
+  roles: [Role]
+  rolesString: String
+  sortedBenchmarkPositions: [BenchmarkPosition]
+  type: String
+  uniqueGroupCodes: [String]
+  version: Int
+}
+
+type BenchmarkPosition {
+  assetType: AssetType
+  benchmark: Benchmark
+  date: String
+  id: Long
+  maxShare: Float!
+  minShare: Float!
+  security: Security
+  share: Float!
+  version: Int
+}
+
+type Bond {
+  calcDate: String
+  coupon: Float!
+  couponDate(arg0: String): Boolean!
+  firstCouponDate: String
+  issueDate: String
+  lastCouponDate: String
+  maturityDate: String
+  nextCouponDate: String
+  previousCouponDate: String
+}
+
+type ClassType {
+  code: String
+  id: Long
+  value: String
+  values: String
+  valuesAsMap: Map_String_StringScalar
+  version: Int
+}
+
+type ClassType2 {
+  code: String
+  id: Long
+  value: String
+  values: String
+  valuesAsMap: Map_String_StringScalar
+  version: Int
+}
+
+type ClassType3 {
+  code: String
+  id: Long
+  value: String
+  values: String
+  valuesAsMap: Map_String_StringScalar
+  version: Int
+}
+
+type ClassType4 {
+  code: String
+  id: Long
+  value: String
+  values: String
+  valuesAsMap: Map_String_StringScalar
+  version: Int
+}
+
+type ClassType5 {
+  code: String
+  id: Long
+  value: String
+  values: String
+  valuesAsMap: Map_String_StringScalar
+  version: Int
+}
+
+type Classification {
+  code: String
+  id: Long
+  name: String
+  names: String
+  namesAsMap: Map_String_StringScalar
+  version: Int
+}
+
+type Classification2 {
+  code: String
+  id: Long
+  name: String
+  names: String
+  namesAsMap: Map_String_StringScalar
+  version: Int
+}
+
+type Classification3 {
+  code: String
+  id: Long
+  name: String
+  names: String
+  namesAsMap: Map_String_StringScalar
+  version: Int
+}
+
+type Contact {
+  addresses: [Address]
+  "Runs analytics+ analysis against the given contact's portfolios. The list of portfolios is first filtered based on visibility and as a result, the analysis only includes portfolios that user can see."
+  analytics("Run analysis based on only portfolio level data. This is faster, if you do not need position level values." withoutPositionData: Boolean = false "Analysis on 'virtual' fund portfolio built from the fund securities" fundPortfolio: Boolean = false "AnalysisParamsDTO" parameters: AnalysisParamsDTOInput): AnalysisDTO
+  archiveData(date: String endDate: String tag: String! startDate: String): [ArchiveData]
+  archiveDatum(date: String tag: String!): ArchiveData
+  assetManagerPortfolios: [Portfolio]
+  auditableValues: LinkedHashMap_String_StringScalar
+  classification: Classification
+  classification2: Classification2
+  classification3: Classification3
+  contactExchanges: [ContactExchange]
+  contactExchangesString: String
+  contactId: String
+  extContactIds: [ExtContactId]
+  externalId: String
+  figureTargetType: [String]
+  figures: String
+  figuresAsObject: KeyFiguresDTO
+  groupTag(tagGroup: String): String
+  id: Long
+  identity: Identity
+  juridical: Juridical
+  language: Language
+  memo: String
+  name: String
+  nationality: Country
+  portfolioReport(use15minDelayedPrice: Boolean = false loadTransactions: Boolean = false calculateExpectedAmountBasedUnsettledTransactions: Boolean = false reportDate: String excludeTradeOrderStatusOpen: Boolean = false useLatestPositionsAmount: Boolean = false calculateExpectedAmountBasedOpenTradeOrders: Boolean = false adjustPositionsBasedOnOpenTradeOrders: Boolean = false): PortfolioReport
+  portfolios: [Portfolio]
+  primaryAddress: Address
+  profile: Profile2
+  profileDataString: String
+  reportPortfolios: [Portfolio]
+  reportings: [Reporting]
+  representativeCodesString: String
+  representativeNamesString: String
+  representatives: [Contact]
+  status: String
+  subType: ContactSubType
+  tags: String
+  tagsAsSet: [String]
+  taxCountry: Country
+  tradeOrders(settlementStartDate: String typeCodes: [String] orderStatus: String transactionStartDate: String securityCode: String transactionDate: String startTrId: Long issuer: String tags: [String] typeCode: String reference: String settlementEndDate: String portfolioType: String transactionEndDate: String resultSize: Int extId: String shortName: String currencyId: Long "0 = no aggregation, 1 = grouped by type, 2 = all together" aggregationMode: Int = 0): [Transaction]
+  trancationExtIdLevel: Int!
+  transactions(settlementStartDate: String hasPaymentDate: String typeCodes: [String] endDate: String securityCode: String startTrId: Long tags: [String] typeCode: String reference: String settlementEndDate: String resultSize: Int extId: String currencyId: Long "0 = no aggregation, 1 = grouped by type, 2 = all together" aggregationMode: Int = 0 startDate: String status: String): [Transaction]
+  type: String
+  version: Int
+}
+
+input ContactDTOInput {
+  "@Nullable Address 1"
+  address1: String
+  "@Nullable Address 2"
+  address2: String
+  "@Nullable City"
+  city: String
+  "@NotNull Classification code (configured in the system)\n"
+  classification: String
+  "@Nullable Classification 2 code (configured in the system)."
+  classification2: String
+  "@Nullable Classification 3 code (configured in the system).\n"
+  classification3: String
+  "@Nullable List of contact exchanges: <code>= <exchange value> (codes configured in the system). E.g. 34=Berlin, 9=Oslo\n"
+  contactExchanges: String
+  "@NotNull Unique ID for the contact (e.g. social security number or other unique identifier)."
+  contactId: String
+  "@Nullable Country"
+  country: String
+  "@Nullable Define as a number:\n1 = allow electronic communication 0 = not allowed"
+  electronicCommunication: String
+  "@Nullable"
+  email: String
+  "@Nullable List of contact's external ID's (available from FA 2.6 onward).\n"
+  extContactIdList: String
+  "@Nullable E.g. social security number or other additional identification."
+  externalId: String
+  "@Nullable Fax"
+  fax: String
+  "@NotNull Identity code (configured in the system)"
+  identity: String
+  "@NotNull Juridical form code (configured in the system)"
+  juridical: String
+  "@Nullable Define the key figure code and individual observations as date-value pairs as a comma-separated list with the format <code>=<date:yyyy-MM-dd>=<value>,<date:yyyy-MM-dd>=<value>:<code>=<date:yyyy-MM-dd>=<value>,...\nE.g. AAA=2009-01-01=1.9,2010-01-01=1.10:TAX=2007-01-01=1,2010-01-01=2\nIf you want to add new observations to the list while keeping the existing values in the system, define three stars and a colon (***:) in the beginning of the syntax."
+  keyFigures: String
+  "@Nullable Language code (configured in the system)\n"
+  language: String
+  "@Nullable Define as a number:\n1 = allow marketing communication 0 = not allowed"
+  marketingCommunication: String
+  "@Nullable Text, memo information"
+  memo: String
+  "@NotNull Contact name (e.g. first name and last name, company name, etc.).\n"
+  name: String
+  "@Nullable Country code (configured in the system)"
+  nationality: String
+  "@Nullable Phone 1"
+  phone1: String
+  "@Nullable Phone 2"
+  phone2: String
+  "@Nullable Contact-specific profile (configured in the system). Use the following syntax to import \/ update profile information: <key>=<value>: <type>#<key>=<value>:<type> etc. (available from FA 2.1.8 onward)"
+  profileAttributes: String
+  "@Nullable Comma separated list of contact IDs that represent the contact (e.g. 1223,1224,1225)\n"
+  representatives: String
+  "@NotNull Use the code of the status:\nA = Active P = Passive C = Closed"
+  status: String
+  "@Nullable Contact sub type code (configured in the system). When a sub type is given, it will find its own parent contact type and override the given contact type's code (in column 4)."
+  subType: String
+  "@Nullable Comma separated list of tags. Existing tags are not replaced unless existing tag is in the same group as the new tag."
+  tags: String
+  "@NotNull Country code (configured in the system)\n"
+  taxCountry: String
+  "@Nullable Define as a number:\n0 = No level constraint\n1 = Portfolio level constraint 2 = Customer level constraint\n"
+  transactionExtIdLevel: String
+  "@NotNull Define as a number:\n1 = Customer\n2 = Asset manager 3 = Broker\n4 = Accountant\n5 = Issuer\n6 = Custody 7=Lead"
+  type: String
+  "@Nullable Zip code"
+  zipCode: String
+}
+
+type ContactExchange {
+  contact: Contact
+  excangeAccount: String
+  exchange: Exchange
+  exchangeAgent: String
+  exchangeValue: String
+  id: Long
+  settlement: Settlement
+  version: Int
+}
+
+type ContactSubType {
+  code: String
+  id: Long
+  name: String
+  names: String
+  namesAsMap: Map_String_StringScalar
+  roles: [Role]
+  rolesString: String
+  version: Int
+}
+
+type CostFormula {
+  code: String
+  formula: String
+  id: Long
+  name: String
+  portfolios: [Portfolio]
+  script: String
+  transactionType: TransactionType
+  version: Int
+}
+
+type Country {
+  code: String
+  id: Long
+  name: String
+  names: String
+  namesAsMap: Map_String_StringScalar
+  version: Int
+}
+
+type Coupon {
+  coupon: Float!
+  date: String
+  id: Long
+  security: Security
+  version: Int
+}
+
+type Exchange {
+  code: String
+  exchangeCountry: Country
+  exchangeMic: String
+  exchangeType: String
+  id: Long
+  name: String
+  operatingMic: String
+  version: Int
+}
+
+type ExtContactId {
+  contact: Contact
+  extId: String
+  extName: String
+  id: Long
+  version: Int
+}
+
+enum ExtIdLevel {
+  CONTACT
+  PORTFOLIO
+}
+
+type ExtPortfolioId {
+  EXT_HANDELSBANKEN_ID: String
+  extId: String
+  id: Long
+  name: String
+  portfolio: Portfolio
+  version: Int
+}
+
+type Fee {
+  feePercent: Float!
+  id: Long
+  portfolio: Portfolio
+  type: String
+  version: Int
+}
+
+type Group {
+  assets: [Asset]
+  code: String
+  id: Long
+  name: String
+  names: String
+  namesAsMap: Map_String_StringScalar
+  priority: Int!
+  version: Int
+}
+
+enum GroupBy {
+  ASSET_CATEGORY
+  ASSET_LIABILITY
+  BASETYPE
+  CLASS1
+  CLASS2
+  CLASS3
+  CLASS4
+  CLASS5
+  COUNTRY
+  CURRENCY
+  DRILLDOWN_GROUP_POSITION
+  DRILLDOWN_GROUP_SECURITY
+  GROUP
+  ISSUER
+  LINKEDSECURITY
+  MARKETPLACE
+  PORTFLIO_JURIDICAL
+  PORTFOLIO
+  PORTFOLIO_ALL
+  PORTFOLIO_CONTACT
+  PORTFOLIO_COUNTRY
+  PORTFOLIO_TYPE
+  POSITION
+  SECTOR
+  SECURITY
+  SETTLEMENTPLACE
+  SUBTYPE
+  TAG
+  TYPE
+}
+
+type GrouppedAnalyticsDTO {
+  analysis(timePeriodCode: String): GrouppedAnalyticsTimePeriodDTO
+  analysisFields: [String]
+  benchmarkSecurity: AnalyticsSecurityDTO
+  bmCode: String
+  bmName: String
+  code: String
+  data: NavigableMap_LocalDate_IndexedReturnDataDTOScalar
+  dataSelected: NavigableMap_LocalDate_IndexedReturnDataSelectedDTOScalar
+  drilldownEnabled: Boolean!
+  endDate: String
+  firstAnalysis: GrouppedAnalyticsTimePeriodDTO
+  groupCode: String
+  grouppedAnalytics: [GrouppedAnalyticsDTO]
+  grouppedAnalyticsByGroup(groupCode: String): [GrouppedAnalyticsDTO]
+  grouppedAnalyticsSelected: GrouppedAnalyticsSelectedDTO
+  grouppedAnalyticsTimePeriod: [GrouppedAnalyticsTimePeriodDTO]
+  indexedReturnData: [IndexedReturnDataDTO]
+  indexedReturnDataSelected: [IndexedReturnDataSelectedDTO]
+  limit: Int!
+  name: String
+  orderedCode: String
+  portfolio: AnalyticsPortfolioDTO
+  riskFreeRate: Float!
+  riskFreeRateBenchmark: String
+  riskFreeRateSecurity: String
+  security: AnalyticsSecurityDTO
+  startDate: String
+  subGrouppedAnalyticsTree: Map_String_GrouppedAnalyticsDTOScalar
+  timePeriodAnalytics: Map_String_GrouppedAnalyticsTimePeriodDTOScalar
+  timeSeriesAnalytics: GrouppedAnalyticsTimeSeriesDTO
+}
+
+input GrouppedAnalyticsParamsDTOInput {
+  analysisFields: [String]
+  ascending: Boolean = true
+  calculateContribution: Boolean = false
+  calculateIrr: Boolean = false
+  customColumnDefinitions: [String]
+  dataFields: [String]
+  dataTimePeriodCode: String
+  drilldownEnabled: Boolean = false
+  endDate: String
+  frequency: String
+  groupCode: String
+  grouppedByProperties: [GroupBy]
+  includeBothTimeSeriesAndGrouppedAnalysisLegacy: Boolean = false
+  includeChildren: Boolean = false
+  includeData: Boolean = false
+  includeFrequencyData: Boolean = false
+  key: String
+  limit: Int = 0
+  locale: Locale
+  riskFreeRate: Float = 0.0
+  riskFreeRateBenchmark: String
+  riskFreeRateSecurity: String
+  sortBy: String
+  startDate: String
+  timePeriodCodes: [String]
+}
+
+type GrouppedAnalyticsSelectedDTO {
+  fields: Map_String_ObjectScalar
+}
+
+type GrouppedAnalyticsTimePeriodDTO {
+  absoluteExposure: Float!
+  absoluteExposureBase: Float!
+  accrual: Float!
+  accrualChange: Float!
+  accrualSecChange: Float!
+  accruedInterest: Float!
+  accruedInterestChange: Float!
+  accruedInterestSecChange: Float!
+  accruedInterestStart: Float!
+  accruedNetCashflow: Float!
+  alpha: Float!
+  alphaClass90: Int!
+  alphaHigh: Float!
+  alphaLow: Float!
+  amount: Float!
+  appraisalRatio: Float!
+  averageMarketValue: Float!
+  averagePurchaseValue: Float!
+  averageReturn: Float!
+  averageReturnBm: Float!
+  averageShareOfParent: Float!
+  averageShareOfTotal: Float!
+  beta: Float!
+  betaClass90: Int!
+  betaHigh: Float!
+  betaLow: Float!
+  bmMaxDrawdown: Float!
+  bmMaxDrawup: Float!
+  commitmentTotal: Float!
+  commitmentTotalChange: Float!
+  committedCapital: Float!
+  committedCapitalChange: Float!
+  consistency: Float!
+  convexity: Float!
+  correl: Float!
+  costs: Float!
+  costsSec: Float!
+  count: Int!
+  customColumnValues: HashMap_String_CustomColumnValueDTOScalar
+  dailyCosts: Float!
+  dailyProfitAndLoss: Float!
+  dailyProfitAndLossSec: Float!
+  distributions: Float!
+  distributionsChange: Float!
+  dpi: Float!
+  endDate: String
+  exPost3rdCostCat1: Float!
+  exPost3rdCostCat10: Float!
+  exPost3rdCostCat2: Float!
+  exPost3rdCostCat3: Float!
+  exPost3rdCostCat4: Float!
+  exPost3rdCostCat5: Float!
+  exPost3rdCostCat6: Float!
+  exPost3rdCostCat7: Float!
+  exPost3rdCostCat8: Float!
+  exPost3rdCostCat9: Float!
+  exPostCostCat1: Float!
+  exPostCostCat10: Float!
+  exPostCostCat2: Float!
+  exPostCostCat3: Float!
+  exPostCostCat4: Float!
+  exPostCostCat5: Float!
+  exPostCostCat6: Float!
+  exPostCostCat7: Float!
+  exPostCostCat8: Float!
+  exPostCostCat9: Float!
+  exPostPfCostCat1: Float!
+  exPostPfCostCat10: Float!
+  exPostPfCostCat2: Float!
+  exPostPfCostCat3: Float!
+  exPostPfCostCat4: Float!
+  exPostPfCostCat5: Float!
+  exPostPfCostCat6: Float!
+  exPostPfCostCat7: Float!
+  exPostPfCostCat8: Float!
+  exPostPfCostCat9: Float!
+  exPostSecCostCat1: Float!
+  exPostSecCostCat10: Float!
+  exPostSecCostCat2: Float!
+  exPostSecCostCat3: Float!
+  exPostSecCostCat4: Float!
+  exPostSecCostCat5: Float!
+  exPostSecCostCat6: Float!
+  exPostSecCostCat7: Float!
+  exPostSecCostCat8: Float!
+  exPostSecCostCat9: Float!
+  exposure: Float!
+  fxRate: Float!
+  fxRateOrig: Float!
+  indexedValueHighest: Float!
+  indexedValueLowest: Float!
+  informationRatio: Float!
+  irr: Float!
+  irrGross: Float!
+  irrGrossSec: Float!
+  irrNet: Float!
+  irrNetSec: Float!
+  irrSec: Float!
+  isinCode: String
+  leverage: Float!
+  m2: Float!
+  macaulayDuration: Float!
+  marketFxRate: Float!
+  marketTradeAmount: Float!
+  marketTradeAmountChange: Float!
+  marketTradeAmountStart: Float!
+  marketUnitPrice: Float!
+  marketUnitPriceDate: String
+  marketValue: Float!
+  marketValueBase: Float!
+  marketValueChange: Float!
+  marketValueHighest: Float!
+  marketValueLowest: Float!
+  marketValueStart: Float!
+  match: Float!
+  maxDrawdown: Float!
+  maxDrawup: Float!
+  modifiedDuration: Float!
+  negNetCashflow: Float!
+  negativeExposure: Float!
+  netCashflow: Float!
+  otherCosts: Float!
+  otherProfits: Float!
+  otherProfitsInclPaidAccruedInterest: Float!
+  paidAccrual: Float!
+  paidAccrualSec: Float!
+  paidAccruedInterest: Float!
+  paidAccruedInterestSec: Float!
+  paidInCapital: Float!
+  paidInCapitalChange: Float!
+  pic: Float!
+  posNetCashflow: Float!
+  positiveExposure: Float!
+  purchaseFxRate: Float!
+  purchaseTradeAmount: Float!
+  purchaseTradeAmountChange: Float!
+  purchaseTradeAmountStart: Float!
+  purchaseUnitPrice: Float!
+  purchaseValue: Float!
+  purchaseValueChange: Float!
+  purchaseValueHighest: Float!
+  purchaseValueLowest: Float!
+  purchaseValueStart: Float!
+  r2: Float!
+  realizedProfits: Float!
+  realizedProfitsFx: Float!
+  realizedProfitsOrig: Float!
+  realizedProfitsSec: Float!
+  remainingCommitment: Float!
+  remainingCommitmentChange: Float!
+  rvpi: Float!
+  shareOfParent: Float!
+  shareOfSecurity: Float!
+  shareOfTotal: Float!
+  sharpeAnn: Float!
+  sharpeBm: Float!
+  soldTradeAmountChange: Float!
+  specificVol: Float!
+  startDate: String
+  timePeriodCode: String
+  totalCosts: Float!
+  totalExPost3rdCosts: Float!
+  totalExPostCosts: Float!
+  totalExPostPfCosts: Float!
+  totalExPostSecCosts: Float!
+  totalGrossProfits: Float!
+  totalGrossProfitsFx: Float!
+  totalGrossProfitsInclAccruedInterest: Float!
+  totalGrossProfitsInclAccruedInterestFx: Float!
+  totalGrossProfitsInclAccruedInterestOrig: Float!
+  totalGrossProfitsInclAccruedInterestSec: Float!
+  totalGrossProfitsOrig: Float!
+  totalGrossProfitsSec: Float!
+  totalNetProfits: Float!
+  totalNetProfitsFx: Float!
+  totalNetProfitsInclAccruedInterest: Float!
+  totalNetProfitsInclAccruedInterestFx: Float!
+  totalNetProfitsInclAccruedInterestOrig: Float!
+  totalNetProfitsInclAccruedInterestSec: Float!
+  totalNetProfitsOrig: Float!
+  totalNetProfitsSec: Float!
+  totalProfits: Float!
+  totalProfitsFx: Float!
+  totalProfitsInclAccruedInterest: Float!
+  totalProfitsInclAccruedInterestFx: Float!
+  totalProfitsInclAccruedInterestOrig: Float!
+  totalProfitsInclAccruedInterestSec: Float!
+  totalProfitsOrig: Float!
+  totalProfitsSec: Float!
+  totalReturn: Float!
+  totalReturnBm: Float!
+  totalValue: Float!
+  trackingError: Float!
+  tradeAmount: Float!
+  tradeAmountChange: Float!
+  tradeAmountOrig: Float!
+  tradeAmountOrigChange: Float!
+  tradeAmountOrigStart: Float!
+  tradeAmountStart: Float!
+  treynor: Float!
+  treynorBm: Float!
+  treynorSqr: Float!
+  tvpi: Float!
+  twr: Float!
+  twrAnn: Float!
+  twrBm: Float!
+  twrBmAnn: Float!
+  twrBmDiff: Float!
+  twrBmDiffContr: Float!
+  twrContr: Float!
+  twrContrFx: Float!
+  twrContrSec: Float!
+  twrFx: Float!
+  twrGross: Float!
+  twrGrossAnn: Float!
+  twrSec: Float!
+  unitPrice: Float!
+  unitPriceOrig: Float!
+  unrealizedProfits: Float!
+  unrealizedProfitsFx: Float!
+  unrealizedProfitsInclAccruedInterest: Float!
+  unrealizedProfitsInclAccruedInterestFx: Float!
+  unrealizedProfitsInclAccruedInterestOrig: Float!
+  unrealizedProfitsInclAccruedInterestSec: Float!
+  unrealizedProfitsOrig: Float!
+  unrealizedProfitsOrigPercent: Float!
+  unrealizedProfitsPercent: Float!
+  unrealizedProfitsSec: Float!
+  var: Float!
+  volAnn: Float!
+  volBm: Float!
+  volEwmaAnn: Float!
+  volEwmaBm: Float!
+  ytm: Float!
+}
+
+type GrouppedAnalyticsTimeSeriesDTO {
+  allGrouppedTimeSeriesAnalytics: [GrouppedAnalyticsTimeSeriesDTO]
+  bestTwr: Float!
+  bestTwrBm: Float!
+  bestTwrPeriod: String
+  bestTwrPeriodBm: String
+  consistency: Float!
+  grouppedTimeSeriesAnalytics(key: String): GrouppedAnalyticsTimeSeriesDTO
+  negTwrPeriods: Int!
+  negTwrPeriodsBm: Int!
+  posTwrPeriods: Int!
+  posTwrPeriodsBm: Int!
+  subTimeSeriesAnalytics: Map_String_GrouppedAnalyticsTimeSeriesDTOScalar
+  timeSeries: [GrouppedAnalyticsDTO]
+  timeSeriesSelected: [GrouppedAnalyticsSelectedDTO]
+  timeSeriesSelectedTree: TreeMap_LocalDate_GrouppedAnalyticsSelectedDTOScalar
+  timeSeriesTree: TreeMap_LocalDate_GrouppedAnalyticsDTOScalar
+  totalPeriods: Int!
+  worstTwr: Float!
+  worstTwrBm: Float!
+  worstTwrPeriod: String
+  worstTwrPeriodBm: String
+}
+
+"Built-in scalar for map-like structures"
+scalar HashMap_String_CustomColumnValueDTOScalar
+
+type Identity {
+  code: String
+  id: Long
+  name: String
+  names: String
+  namesAsMap: Map_String_StringScalar
+  version: Int
+}
+
+input ImportRowsDTOInput {
+  contacts: [ContactDTOInput]
+  portfolios: [PortfolioDTOInput]
+  prices: [PriceDTOInput]
+  securities: [SecurityDTOInput]
+  tradeOrders: [TradeOrderDTOInput]
+  transactions: [TransactionDTOInput]
+}
+
+type IndexedReturnDataDTO {
+  absoluteExposure: Float!
+  absoluteExposureBase: Float!
+  absoluteExposureStart: Float!
+  accountId: Long
+  accrual: Float!
+  accruedInterest: Float!
+  accruedInterestStart: Float!
+  accruedNetCashflow: Float!
+  amount: Float!
+  averageMarketValue: Float!
+  averagePurchaseTradeAmount: Float!
+  averageRecordTradeAmount: Float!
+  averageShareOfParent: Float!
+  averageShareOfTotal: Float!
+  averageTradeAmount: Float!
+  benchmarkIndexedValue: Float!
+  benchmarkIndexedValueChange: Float!
+  benchmarkIndexedValueStart: Float!
+  bmDrawdown: Float!
+  bmDrawup: Float!
+  bmIndexValueHighest: Float!
+  bmIndexValueLowest: Float!
+  bmMaxDrawdown: Float!
+  bmMaxDrawup: Float!
+  code: String
+  commitment: Float!
+  commitmentSec: Float!
+  commitmentTotal: Float!
+  commitmentTotalSec: Float!
+  committedCapital: Float!
+  consistency: Float!
+  contrIndexedValue: Float!
+  contrIndexedValueChange: Float!
+  contrIndexedValueStart: Float!
+  contrTwr: Float!
+  contrTwrFx: Float!
+  contrTwrSec: Float!
+  costIndexedValue: Float!
+  costIndexedValueChange: Float!
+  costIndexedValueStart: Float!
+  costs: Float!
+  count: Int!
+  countBeatBM: Int!
+  dailyCosts: Float!
+  dailyProfitAndLoss: Float!
+  dailyProfitAndLossSec: Float!
+  date: String
+  distributions: Float!
+  dpi: Float!
+  drawdown: Float!
+  drawup: Float!
+  exposure: Float!
+  exposureStart: Float!
+  futureSecurity: Boolean!
+  fxRate: Float!
+  getaAccruedInterest: Float!
+  getaCommitment: Float!
+  getaCommitmentTotal: Float!
+  getaCommittedCapital: Float!
+  getaCost: Float!
+  getaDistributions: Float!
+  getaExPost3rdCostCat1: Float!
+  getaExPost3rdCostCat10: Float!
+  getaExPost3rdCostCat2: Float!
+  getaExPost3rdCostCat3: Float!
+  getaExPost3rdCostCat4: Float!
+  getaExPost3rdCostCat5: Float!
+  getaExPost3rdCostCat6: Float!
+  getaExPost3rdCostCat7: Float!
+  getaExPost3rdCostCat8: Float!
+  getaExPost3rdCostCat9: Float!
+  getaExPostPfCostCat1: Float!
+  getaExPostPfCostCat10: Float!
+  getaExPostPfCostCat2: Float!
+  getaExPostPfCostCat3: Float!
+  getaExPostPfCostCat4: Float!
+  getaExPostPfCostCat5: Float!
+  getaExPostPfCostCat6: Float!
+  getaExPostPfCostCat7: Float!
+  getaExPostPfCostCat8: Float!
+  getaExPostPfCostCat9: Float!
+  getaExPostSecCostCat1: Float!
+  getaExPostSecCostCat10: Float!
+  getaExPostSecCostCat2: Float!
+  getaExPostSecCostCat3: Float!
+  getaExPostSecCostCat4: Float!
+  getaExPostSecCostCat5: Float!
+  getaExPostSecCostCat6: Float!
+  getaExPostSecCostCat7: Float!
+  getaExPostSecCostCat8: Float!
+  getaExPostSecCostCat9: Float!
+  getaGrossMarketValue: Float!
+  getaImplicitCost: Float!
+  getaMarketTradeAmount: Float!
+  getaMarketValue: Float!
+  getaNetCashflow: Float!
+  getaOtherCost: Float!
+  getaPaidAccrual: Float!
+  getaPaidAccruedInterest: Float!
+  getaPaidInCapital: Float!
+  getaProfit: Float!
+  getaPurchaseTradeAmount: Float!
+  getaPurchaseValue: Float!
+  getaRecordSoldProfit: Float!
+  getaRecordTradeAmount: Float!
+  getaRecordValueChange: Float!
+  getaRemainingCommitment: Float!
+  getaSoldProfit: Float!
+  getaSoldTradeAmount: Float!
+  getaTotalValue: Float!
+  getaTradeAmount: Float!
+  getaValueChange: Float!
+  getdAbsoluteExposure: Float!
+  getdAccrual: Float!
+  getdAccrualSec: Float!
+  getdAccruedInterest: Float!
+  getdAccruedInterestSec: Float!
+  getdCommitment: Float!
+  getdCommitmentSec: Float!
+  getdCommitmentTotal: Float!
+  getdCommitmentTotalSec: Float!
+  getdCommittedCapital: Float!
+  getdCost: Float!
+  getdCostSec: Float!
+  getdDistributions: Float!
+  getdExPost3rdCostCat1: Float!
+  getdExPost3rdCostCat10: Float!
+  getdExPost3rdCostCat2: Float!
+  getdExPost3rdCostCat3: Float!
+  getdExPost3rdCostCat4: Float!
+  getdExPost3rdCostCat5: Float!
+  getdExPost3rdCostCat6: Float!
+  getdExPost3rdCostCat7: Float!
+  getdExPost3rdCostCat8: Float!
+  getdExPost3rdCostCat9: Float!
+  getdExPostPfCostCat1: Float!
+  getdExPostPfCostCat10: Float!
+  getdExPostPfCostCat2: Float!
+  getdExPostPfCostCat3: Float!
+  getdExPostPfCostCat4: Float!
+  getdExPostPfCostCat5: Float!
+  getdExPostPfCostCat6: Float!
+  getdExPostPfCostCat7: Float!
+  getdExPostPfCostCat8: Float!
+  getdExPostPfCostCat9: Float!
+  getdExPostSecCostCat1: Float!
+  getdExPostSecCostCat10: Float!
+  getdExPostSecCostCat2: Float!
+  getdExPostSecCostCat3: Float!
+  getdExPostSecCostCat4: Float!
+  getdExPostSecCostCat5: Float!
+  getdExPostSecCostCat6: Float!
+  getdExPostSecCostCat7: Float!
+  getdExPostSecCostCat8: Float!
+  getdExPostSecCostCat9: Float!
+  getdExposure: Float!
+  getdGrossMarketValue: Float!
+  getdImplicitCost: Float!
+  getdMarketTradeAmount: Float!
+  getdMarketValue: Float!
+  getdMarketValueSec: Float!
+  getdOrigSoldProfit: Float!
+  getdOrigSoldProfitSec: Float!
+  getdOrigValueChange: Float!
+  getdOrigValueChangeSec: Float!
+  getdOtherCost: Float!
+  getdOtherCostCarried: Float!
+  getdPaidAccrual: Float!
+  getdPaidAccrualSec: Float!
+  getdPaidAccruedInterest: Float!
+  getdPaidAccruedInterestSec: Float!
+  getdPaidInCapital: Float!
+  getdProfit: Float!
+  getdProfitCarried: Float!
+  getdPurchaseTradeAmount: Float!
+  getdPurchaseValue: Float!
+  getdRecordSoldProfit: Float!
+  getdRecordTradeAmount: Float!
+  getdRecordValueChange: Float!
+  getdRemainingCommitment: Float!
+  getdSoldProfit: Float!
+  getdSoldProfitSec: Float!
+  getdSoldTradeAmount: Float!
+  getdTotalExPostSecCosts: Float!
+  getdTradeAmount: Float!
+  getdValueChange: Float!
+  getdValueChangeSec: Float!
+  grossIndexedValue: Float!
+  grossIndexedValueChange: Float!
+  grossIndexedValueStart: Float!
+  grossMarketValue: Float!
+  grossMarketValueStart: Float!
+  hasBenchmark: Boolean!
+  includeOtherCostsInTwr: Boolean!
+  indexValueHighest: Float!
+  indexValueLowest: Float!
+  indexedValue: Float!
+  indexedValueChange: Float!
+  indexedValueFx: Float!
+  indexedValueFxChange: Float!
+  indexedValueFxStart: Float!
+  indexedValueSec: Float!
+  indexedValueSecChange: Float!
+  indexedValueSecStart: Float!
+  indexedValueStart: Float!
+  initialized: Boolean!
+  irr: Float!
+  irrGross: Float!
+  irrGrossSec: Float!
+  irrNet: Float!
+  irrNetSec: Float!
+  irrSec: Float!
+  linkedPortfolioId: Long
+  marketFxRate: Float!
+  marketTradeAmount: Float!
+  marketTradeAmountStart: Float!
+  marketUnitPrice: Float!
+  marketUnitPriceDate: String
+  marketValue: Float!
+  marketValueBase: Float!
+  marketValueHighest: Float!
+  marketValueLowest: Float!
+  marketValueOfTotal: Float!
+  marketValueStart: Float!
+  maxDrawdown: Float!
+  maxDrawup: Float!
+  name: String
+  negNetCashflow: Float!
+  negNetCashflowSec: Float!
+  negPfNetCashflow: Float!
+  negativeExposure: Float!
+  netCashflow: Float!
+  netCashflowSec: Float!
+  originalData: Boolean!
+  originalIndexedValue: Boolean!
+  otherCosts: Float!
+  otherProfits: Float!
+  paidInCapital: Float!
+  parentPositionKey: String
+  parentSecurityId: Long
+  pfId: Long
+  pfNetCashflow: Float!
+  pic: Float!
+  portfolioName: String
+  portfolioShortName: String
+  posNetCashflow: Float!
+  posNetCashflowSec: Float!
+  posPfNetCashflow: Float!
+  positiveExposure: Float!
+  previousAccruedInterest: Float!
+  purchaseFxRate: Float!
+  purchaseTradeAmount: Float!
+  purchaseTradeAmountStart: Float!
+  purchaseUnitPrice: Float!
+  purchaseValue: Float!
+  purchaseValueHighest: Float!
+  purchaseValueLowest: Float!
+  purchaseValueStart: Float!
+  realizedProfits: Float!
+  realizedProfitsEffective: Float!
+  recordFxRate: Float!
+  recordTradeAmount: Float!
+  recordTradeAmountStart: Float!
+  recordUnitPrice: Float!
+  remainingCommitment: Float!
+  rvpi: Float!
+  secPerformance: SecPerformance
+  securityCode: String
+  securityId: Long
+  share: Float!
+  shareOfSecurity: Float!
+  shareOfTotal: Float!
+  shareStart: Float!
+  totalCosts: Float!
+  totalMarketValue: Float!
+  totalProfits: Float!
+  totalProfitsEffective: Float!
+  totalPurchaseValue: Float!
+  totalShareOfParent: Float!
+  totalShareOfTotal: Float!
+  totalValue: Float!
+  tradeAmount: Float!
+  tradeAmountStart: Float!
+  tvpi: Float!
+  twrCalculationMethod: Int!
+  unitPrice: Float!
+  unrealizedProfits: Float!
+  unrealizedProfitsEffective: Float!
+}
+
+type IndexedReturnDataSelectedDTO {
+  date: String
+  fields: Map_String_ObjectScalar
+}
+
+"Built-in scalar representing an instant in time"
+scalar Instant
+
+"Any JSON value"
+scalar Json
+
+type Juridical {
+  code: String
+  id: Long
+  name: String
+  names: String
+  namesAsMap: Map_String_StringScalar
+  version: Int
+}
+
+type KeyFiguresDTO {
+  figures: Map_String_List_KeyFigureDTOScalar
+  latestValues: Map_String_Map_String_ObjectScalar
+}
+
+type Language {
+  code: String
+  id: Long
+  locale: String
+  name: String
+  names: String
+  namesAsMap: Map_String_StringScalar
+  version: Int
+}
+
+type Limit {
+  analysis: String
+  auditableValues: LinkedHashMap_String_StringScalar
+  countBroken: Int!
+  countOk: Int!
+  countWarn: Int!
+  date: String
+  id: Long
+  items: String
+  limitDefinition: LimitDefinition
+  limitValue: Float!
+  portfolio: Portfolio
+  result: Int!
+  resultMap: Map_Integer_StringScalar
+  type: Int!
+  version: Int
+}
+
+type LimitDefinition {
+  auditableValues: LinkedHashMap_String_StringScalar
+  denomFieldName: String
+  denomGroup1: String
+  denomGroup1Filter: String
+  denomGroup2: String
+  denomGroup2Filter: String
+  denomGroupCode: String
+  denomLimit: Int!
+  denomSortAsc: Boolean!
+  denomSortBy: String
+  id: Long
+  limitCode: String
+  limitGroup: LimitGroup
+  limitName: String
+  maxValue: Float!
+  maxWarnValue: Float!
+  minValue: Float!
+  minWarnValue: Float!
+  numFieldName: String
+  numGroup1: String
+  numGroup1Filter: String
+  numGroup2: String
+  numGroup2Filter: String
+  numGroupCode: String
+  numLimit: Int!
+  numSortAsc: Boolean!
+  numSortBy: String
+  numSummarize: Boolean!
+  profileKey: String
+  selectMethod: String
+  version: Int
+}
+
+type LimitGroup {
+  code: String
+  id: Long
+  limitDefinitionList: [LimitDefinition]
+  name: String
+  version: Int
+}
+
+"Built-in scalar for map-like structures"
+scalar LinkedHashMap_String_StringScalar
+
+"Built-in scalar for map-like structures"
+scalar ListOrderedMapScalar
+
+"Built-in Locale"
+scalar Locale
+
+"Long type"
+scalar Long
+
+"Built-in scalar for map-like structures"
+scalar Map_Date_PortfolioReportScalar
+
+"Built-in scalar for map-like structures"
+scalar Map_Integer_StringScalar
+
+"Built-in scalar for map-like structures"
+scalar Map_Long_SecurityScalar
+
+"Built-in scalar for map-like structures"
+scalar Map_String_GroupScalar
+
+"Built-in scalar for map-like structures"
+scalar Map_String_GrouppedAnalyticsDTOScalar
+
+"Built-in scalar for map-like structures"
+scalar Map_String_GrouppedAnalyticsTimePeriodDTOScalar
+
+"Built-in scalar for map-like structures"
+scalar Map_String_GrouppedAnalyticsTimeSeriesDTOScalar
+
+"Built-in scalar for map-like structures"
+scalar Map_String_List_KeyFigureDTOScalar
+
+"Built-in scalar for map-like structures"
+scalar Map_String_List_PortfolioReportSubItemScalar
+
+"Built-in scalar for map-like structures"
+scalar Map_String_List_TransactionScalar
+
+"Built-in scalar for map-like structures"
+scalar Map_String_Map_String_ObjectScalar
+
+"Built-in scalar for map-like structures"
+scalar Map_String_NavigableMap_Date_List_AllocationScalar
+
+"Built-in scalar for map-like structures"
+scalar Map_String_ObjectScalar
+
+"Built-in scalar for map-like structures"
+scalar Map_String_PortfolioReportItemScalar
+
+"Built-in scalar for map-like structures"
+scalar Map_String_StringScalar
+
+type MarketDataObservation {
+  accrual: Float!
+  accrualCalc: Float!
+  auditableValues: LinkedHashMap_String_StringScalar
+  close: Float!
+  close1: Float!
+  close1Calc: Float!
+  close2: Float!
+  close2Calc: Float!
+  close3: Float!
+  close3Calc: Float!
+  close4: Float!
+  close4Calc: Float!
+  close5: Float!
+  close5Calc: Float!
+  closeMan: Float!
+  closeManCalc: Float!
+  closeManView: Float!
+  closeView: Float!
+  currencyCode: String
+  delta: Float!
+  deltaCalc: Float!
+  high: Float!
+  id: Long
+  logYield: Float!
+  low: Float!
+  obsDate: String
+  open1: Float!
+  priceSecurity: Security
+  security: Security
+  updateCode: String
+  version: Int
+  volume: Float!
+  yield: Float!
+}
+
+enum Mode {
+  INSERT_ONLY
+  INSERT_OR_UPDATE
+  TEST
+  UPDATE_ONLY
+}
+
+"Mutation root"
+type Mutation {
+  importTradeOrders(tradeOrderList: [TradeOrderDTOInput]): [Map_String_ObjectScalar]
+  importPrices(priceList: [PriceDTOInput]): [Map_String_ObjectScalar]
+  "Batch importing of portfolios, securities, contacts, corporate actions, transaction and market data."
+  importGeneral("0 = Import\/Update, 1 = Import only, 2 = Update only" mode: Int = 0 withRules: Boolean = false "0 = Import\/Update, 1 = Import only, 2 = Update only" cMode: Int = 0 "0 = Import\/Update, 1 = Import only, 2 = Update only" oMode: Int = 0 "0 = Import\/Update, 1 = Import only, 2 = Update only" crMode: Mode = INSERT_OR_UPDATE "0 = Import\/Update, 1 = Import only, 2 = Update only" caMode: Mode = INSERT_OR_UPDATE "0 = Import\/Update, 1 = Import only, 2 = Update only" trMode: Int = 0 "0 = Import\/Update, 1 = Import only, 2 = Update only" prMode: Int = 0 "List of objects to import. Can be mix between different object types." rows: ImportRowsDTOInput "0 = Import\/Update, 1 = Import only, 2 = Update only" pMode: Int = 0 importAsync: Boolean = false "0 = Import\/Update, 1 = Import only, 2 = Update only" sMode: Int = 0): [Map_String_ObjectScalar]
+  importContacts(contactList: [ContactDTOInput]): [Map_String_ObjectScalar]
+  importPortfolios(portfolioList: [PortfolioDTOInput]): [Map_String_ObjectScalar]
+  importSecurities(securityList: [SecurityDTOInput]): [Map_String_ObjectScalar]
+  importTransactions(transactionList: [TransactionDTOInput]): [Map_String_ObjectScalar]
+}
+
+"Built-in scalar for map-like structures"
+scalar NavigableMap_Date_List_BenchmarkPositionScalar
+
+"Built-in scalar for map-like structures"
+scalar NavigableMap_Date_MarketDataObservationScalar
+
+"Built-in scalar for map-like structures"
+scalar NavigableMap_Date_SecurityExCostScalar
+
+"Built-in scalar for map-like structures"
+scalar NavigableMap_LocalDate_IndexedReturnDataDTOScalar
+
+"Built-in scalar for map-like structures"
+scalar NavigableMap_LocalDate_IndexedReturnDataSelectedDTOScalar
+
+"Built-in scalar for dynamic values"
+scalar ObjectScalar
+
+type Portfolio {
+  ACCRUED_INTEREST_VALUATION_SETTLEMENT_DATE: Int!
+  ACCRUED_INTEREST_VALUATION_TRANSACTION_DATE: Int!
+  VALUATION_METHOD_AVER: String
+  VALUATION_METHOD_AVER_SEPARATE_LOTS: String
+  VALUATION_METHOD_AVER_V2: String
+  VALUATION_METHOD_AVER_WITH_ADJ: String
+  VALUATION_METHOD_FIFO: String
+  VALUATION_METHOD_FIFO_COMBINED: String
+  VALUATION_METHOD_FIFO_WITH_ADJ: String
+  accountSubItems: [AccountSubItem]
+  accountSubItemsBase: [AccountSubItem]
+  accounts: [Account]
+  accountsString: String
+  accruedInterestValuation: Int!
+  active: Boolean!
+  allLimits: [Limit]
+  "Runs analytics+ analysis against the given list of portfolios. The list of portfolios is first filtered based on visibility and as a result, the analysis only includes portfolios that user can see."
+  analytics("Run analysis based on only portfolio level data. This is faster, if you do not need position level values." withoutPositionData: Boolean = false "Analysis on 'virtual' fund portfolio built from the fund securities" fundPortfolio: Boolean = false "AnalysisParamsDTO" parameters: AnalysisParamsDTOInput): AnalysisDTO
+  archiveData(date: String endDate: String tag: String! startDate: String): [ArchiveData]
+  archiveDatum(date: String tag: String!): ArchiveData
+  assetManagers: [Contact]
+  assetManagersString: String
+  auditableValues: LinkedHashMap_String_StringScalar
+  benchmark: Benchmark
+  benchmarkDataString: String
+  bookEntry: String
+  closeMethod: Int!
+  closedPortfolioReportItemsAsMap: Map_String_PortfolioReportItemScalar
+  combineSubItems: Boolean!
+  complianceStatusAnalysisTimeInvestmentPlan: Instant
+  complianceStatusAnalysisTimePostTrade: Instant
+  complianceStatusAnalysisTimePreTrade: Instant
+  complianceStatusInvestmentPlan: Int!
+  complianceStatusPostTrade: Int!
+  complianceStatusPreTrade: Int!
+  contact: Contact
+  contacts: [Contact]
+  contactsString: String
+  costFormulas: [CostFormula]
+  costFormulasString: String
+  country: Country
+  creationDate: String
+  currency: Security
+  custody: Contact
+  defaultAccount: String
+  description: String
+  emailAddresses: String
+  extId: String
+  extPortfolioIds: [ExtPortfolioId]
+  fees: [Fee]
+  figureTargetType: [String]
+  figures: String
+  figuresAsObject: KeyFiguresDTO
+  groupTag(tagGroup: String): String
+  id: Long
+  info1: String
+  info2: String
+  info3: String
+  investmentPlan: Benchmark
+  investmentPlanDataString: String
+  investmentPlanLimits: [Limit]
+  juridical: Juridical
+  language: Language
+  latestPortfolioReport: PortfolioReport
+  limits: [Limit]
+  linkedSecurities: [Security]
+  locked: Boolean!
+  matchType: String
+  modelPortfolio: Benchmark
+  name: String
+  notes: String
+  parentPortfolios: [Portfolio]
+  portfolioGroups: [PortfolioGroup]
+  portfolioGroupsString: String
+  portfolioReport(use15minDelayedPrice: Boolean = false loadTransactions: Boolean = false calculateExpectedAmountBasedUnsettledTransactions: Boolean = false reportDate: String excludeTradeOrderStatusOpen: Boolean = false useLatestPositionsAmount: Boolean = false calculateExpectedAmountBasedOpenTradeOrders: Boolean = false "If true, position amounts and trade amounts are adjusted to equal the expected values" adjustPositionsBasedOnOpenTradeOrders: Boolean = false): PortfolioReport
+  "Finds purchase lots that are linked to the given portfolio. The filterParams parameter can be provided to further customize the result."
+  portfolioReportSubItems(filterParams: SubItemFilterParamsInput): [PortfolioReportSubItem]
+  portfolioReports: [PortfolioReport]
+  portfolioReportsAsMap: Map_Date_PortfolioReportScalar
+  portfolios: [Portfolio]
+  postingsDate: String
+  preTradeLimits: [Limit]
+  priceSource: String
+  primaryContact: Contact
+  primaryContactTypeCode: String
+  profile: Profile2
+  profileDataString: String
+  reportContacts: [Contact]
+  reportContactsString: String
+  reportings: [Reporting]
+  ruleSet: RuleSet
+  ruleSets: [RuleSet]
+  ruleSetsString: String
+  securityMap: Map_Long_SecurityScalar
+  shortName: String
+  sortedTransactions: [Transaction]
+  startDate: String
+  status: String
+  strategy: Benchmark
+  strategyDataString: String
+  subItemsMaps: Map_String_List_PortfolioReportSubItemScalar
+  subPortfolioReportItems: [PortfolioReportSubItem]
+  subPortfolioReportItemsBase: [PortfolioReportSubItem]
+  subPortfolioReportItemsClosed: [PortfolioReportSubItem]
+  tags: String
+  tagsAsSet: [String]
+  tradeOrders(settlementStartDate: String typeCodes: [String] orderStatus: String transactionStartDate: String securityCode: String transactionDate: String startTrId: Long issuer: String tags: [String] typeCode: String reference: String settlementEndDate: String portfolioType: String transactionEndDate: String resultSize: Int extId: String shortName: String currencyId: Long "0 = no aggregation, 1 = grouped by type, 2 = all together" aggregationMode: Int = 0): [Transaction]
+  transactions(settlementStartDate: String hasPaymentDate: String typeCodes: [String] endDate: String securityCode: String startTrId: Long tags: [String] typeCode: String reference: String settlementEndDate: String resultSize: Int extId: String currencyId: Long "0 = no aggregation, 1 = grouped by type, 2 = all together" aggregationMode: Int = 0 startDate: String status: String): [Transaction]
+  type: PortfolioType
+  typeCode: String
+  updateDate: String
+  usage: String
+  valuationMethod: String
+  version: Int
+}
+
+input PortfolioDTOInput {
+  "@Nullable Please consider looking into help-desk importing portfolio guide"
+  accounts: String
+  "@Nullable Define as a number:\n0 = \"Transaction date\" 1 = \"Settlement date\"\nIf no value is filled in, the default value 0 \"Transaction date\" is used. (Available from FA 3.1"
+  accruedInterestValuation: String
+  "@Nullable Comma separated list of contact IDs managing the portfolio"
+  assetManagers: String
+  "@Nullable Benchmark code (configured in the system) or in order to use portfolio specific benchmarks, use the following syntax <yyyy-MM-dd>,<security1 code>=<share1>,<security code2>=<share2>: <yyyy-MM-dd>,<security code3>=<share3> etc."
+  benchmark: String
+  "@Nullable String value for book entry account"
+  bookEntry: String
+  "@Nullable Define as a number: 0 = \"Choose\", 1 = \"No change\", 2 = \"Depreciation\", 3 = \"Depreciation and refund\", 4 = \"Market value\""
+  closeMethod: String
+  "@Nullable Comma separated list of contact IDs"
+  contact: String
+  "@Nullable Comma separated list of cost formula codes (configured in the system)\n"
+  costFormulas: String
+  "@Nullable Country code (configured in the system), if not given will use primary contact's tax country"
+  country: String
+  "@Nullable yyyy-MM-dd. Date when the portfolio was created."
+  creationDate: String
+  "@NotNull Reporting currency code"
+  currency: String
+  "@Nullable Contact for the custody (use the Contact ID to identify the custody)."
+  custody: String
+  "@Nullable Open text field"
+  description: String
+  "@Nullable Comma separated list of email addresses. E.g. a@fasolutions.com, b@fasolutions.com"
+  emailAddresses: String
+  "@Nullable External contract ID such as book-entry account number"
+  extId: String
+  "@Nullable List of portfolio's external ID's. Use the following syntax <ext_id1=ext_name1>, <ext_id2=ext_name2> etc. "
+  extPortfolioIdList: String
+  "@Nullable List of portfolio fees: <type>=<fee percent>. Types are: transaction, payment, withdrawal, management. E.g. transaction=2.3, management=1.5"
+  fees: String
+  "@Nullable"
+  info1: String
+  "@Nullable"
+  info2: String
+  "@Nullable"
+  info3: String
+  "@Nullable Please consider looking into help-desk's import portfolio guide"
+  investmentPlan: String
+  "@Nullable Juridical form code (configured in the system), if not given will use primary contact's juridical form"
+  juridical: String
+  "@Nullable Define the key figure code and individual observations as date-value pairs as a comma-separated list with the format <code>=<date:yyyy-MM-dd>=<value>,<date:yyyy-MM-dd>=<value>:<code>=<date:yyyy-MM-dd>=<value>,...\nE.g. AAA=2009-01-01=1.9,2010-01-01=1.10:TAX=2007-01-01=1,2010-01-01=2\nIf you want to add new observations to the list while keeping the existing values in the system, define three stars and a colon (***:) in the beginning of the syntax."
+  keyFigures: String
+  "@NotNull Language code (configured in the system)"
+  language: String
+  "@Nullable Name of the model portfolio (configured in the system)"
+  modelPortfolio: String
+  "@NotNull Portfolio name"
+  name: String
+  "@Nullable Text, notes or memo on the portfolio."
+  notes: String
+  "@Nullable Comma-separated list of parent portfolios' Portfolio IDs.\n"
+  parent: String
+  "@Nullable Comma separated list of groups (codes) that the portfolio belongs to. Groups and their codes are configured in the system."
+  portfolioGroups: String
+  "@Nullable If price source is not null, it will override the Security's \"source\" effect to fetch the close price of security, only when security source is 'DEFAULT'. Otherwise system would use security source."
+  priceSource: String
+  "@Nullable Primary customer (use contact ID)"
+  primaryContact: String
+  "@Nullable Portfolio-specific profile (configured in the system). Use the following syntax to import \/ update profile information: <key>=<value>: <type>#<key>=<value>:<type> etc. (available from FA 2.1.8 onward)\n"
+  profileAttributes: String
+  "@Nullable Comma separated list of contact IDs"
+  reportContacts: String
+  "@Nullable Not used currently"
+  ruleSet: String
+  ruleSets: String
+  "@NotNull, Text or number uniquely identifying a portfolio."
+  shortName: String
+  "@Nullable yyyy-MM-dd, portfolio start date"
+  startDate: String
+  "@NotNull Use the code of the status: A = Active, P = Passive, C = Closed"
+  status: String
+  "@Nullable Please consider looking into help-desk's import portfolio guide"
+  strategy: String
+  "@Nullable Comma separated list of tags. Existing tags are not replaced unless existing tag is in the same group as the new tag."
+  tags: String
+  "@NotNull Type code (configured in the system)"
+  type: String
+  "@Nullable yyyy-MM-dd, portfolio update"
+  updateDate: String
+  "@Nullable Use the code of the valuation method:"
+  valuationMethod: String
+}
+
+type PortfolioGroup {
+  code: String
+  description: String
+  dynamic: Boolean
+  excludeExpression: String
+  id: Long
+  includeExpression: String
+  name: String
+  portfolios: [Portfolio]
+  roles: [Role]
+  rolesString: String
+  version: Int
+}
+
+type PortfolioReport {
+  accountBalance: Float!
+  accountBalancePv: Float!
+  accountItems: [AccountItem]
+  accruedInterestStart: Float!
+  accuredInterest: Float!
+  benchmarkIndexedValue: Float!
+  benchmarkIndexedValueChange: Float!
+  benchmarkIndexedValueStart: Float!
+  bmPerformanceAnalysisBeans: ListOrderedMapScalar
+  commitment: Float!
+  commitmentTotal: Float!
+  exposure: Float!
+  exposureStart: Float!
+  fxRate(quoteCurrency: String): Float
+  getdAccountBalance: Float!
+  getdAccountBalancePv: Float!
+  getdAccountProfit: Float!
+  getdAccruedInterest: Float!
+  getdCommitment: Float!
+  getdCommitmentTotal: Float!
+  getdCost: Float!
+  getdExPost3rdCostCat1: Float!
+  getdExPost3rdCostCat10: Float!
+  getdExPost3rdCostCat2: Float!
+  getdExPost3rdCostCat3: Float!
+  getdExPost3rdCostCat4: Float!
+  getdExPost3rdCostCat5: Float!
+  getdExPost3rdCostCat6: Float!
+  getdExPost3rdCostCat7: Float!
+  getdExPost3rdCostCat8: Float!
+  getdExPost3rdCostCat9: Float!
+  getdExPostPfCostCat1: Float!
+  getdExPostPfCostCat10: Float!
+  getdExPostPfCostCat2: Float!
+  getdExPostPfCostCat3: Float!
+  getdExPostPfCostCat4: Float!
+  getdExPostPfCostCat5: Float!
+  getdExPostPfCostCat6: Float!
+  getdExPostPfCostCat7: Float!
+  getdExPostPfCostCat8: Float!
+  getdExPostPfCostCat9: Float!
+  getdExPostSecCostCat1: Float!
+  getdExPostSecCostCat10: Float!
+  getdExPostSecCostCat2: Float!
+  getdExPostSecCostCat3: Float!
+  getdExPostSecCostCat4: Float!
+  getdExPostSecCostCat5: Float!
+  getdExPostSecCostCat6: Float!
+  getdExPostSecCostCat7: Float!
+  getdExPostSecCostCat8: Float!
+  getdExPostSecCostCat9: Float!
+  getdExposure: Float!
+  getdMarketTradeAmount: Float!
+  getdMarketValueDirty: Float!
+  getdOrigSoldProfit: Float!
+  getdOrigTradeAmount: Float!
+  getdOrigValueChange: Float!
+  getdOtherCost: Float!
+  getdPaidAccruedInterest: Float!
+  getdPositionProfit: Float!
+  getdProfit: Float!
+  getdPurchaseTradeAmount: Float!
+  getdRecSoldProfit: Float!
+  getdRecTradeAmount: Float!
+  getdRecValueChange: Float!
+  getdSoldProfit: Float!
+  getdSoldTradeAmount: Float!
+  getdValueChange: Float!
+  id: Long
+  indexedValue: Float!
+  indexedValueChange: Float!
+  indexedValueStart: Float!
+  intradayProfit: Float!
+  marketValue: Float!
+  marketValueDirty: Float!
+  marketValueDirtyStart: Float!
+  marketValueStart: Float!
+  negativeNetCashflow: Float!
+  netCashflow: Float!
+  origPurchaseValue: Float!
+  origValueChangeAbsolute: Float!
+  origValueChangeRelative: Float!
+  pfPerformanceAnalysisBeans: ListOrderedMapScalar
+  portfolio: Portfolio
+  portfolioId: Long
+  portfolioReportItems: [PortfolioReportItem]
+  positionExposure: Float!
+  positionMarketValue: Float!
+  positionMarketValueDirty: Float!
+  positionOrigPurchaseValue: Float!
+  positionPurchaseValue: Float!
+  positionRecPurchaseValue: Float!
+  positiveNetCashflow: Float!
+  previousPortfolioReport: PortfolioReport
+  purchaseValue: Float!
+  recPurchaseValue: Float!
+  recValueChangeAbsolute: Float!
+  recValueChangeRelative: Float!
+  reportDate: String
+  transactionId2PortfolioReportItemMaps: Map_String_PortfolioReportItemScalar
+  unExecutedTradeOrders: [Transaction]
+  unSettledTransactions: [Transaction]
+  unSettledTransactions2AccountItemMap: Map_String_List_TransactionScalar
+  unSettledTransactions2PortfolioReportItemMap: Map_String_List_TransactionScalar
+  unpaidTransactions: [Transaction]
+  unpaidTransactions2AccountItemMap: Map_String_List_TransactionScalar
+  unprocessedTransactionList: [Transaction]
+  valueChangeAbsolute: Float!
+  valueChangeRelative: Float!
+  version: Int
+}
+
+type PortfolioReportItem {
+  account: Account
+  accountId: Long
+  accountName: String
+  accrual: Float!
+  accrualSec: Float!
+  accrualStart: Float!
+  accruedCashflow: Float!
+  accruedCost: Float!
+  accruedCostSec: Float!
+  accruedInterest: Float!
+  accruedInterestSec: Float!
+  accruedInterestStart: Float!
+  accruedProfit: Float!
+  adjRecValueChangeAbsolute: Float!
+  adjValueChangeAbsolute: Float!
+  adjValueChangeAbsoluteSec: Float!
+  amount: Float!
+  amountAfterOpenTradeOrders: Float!
+  amountBeforeUnsettledTransactions: Float!
+  amountFromOpenTradeOrders: Float!
+  amountFromSentTradeOrders: Float!
+  cashflow: Float!
+  closedSubItems: [PortfolioReportSubItem]
+  commitment: Float!
+  commitmentSec: Float!
+  commitmentTotal: Float!
+  commitmentTotalSec: Float!
+  cost: Float!
+  costSec: Float!
+  currency: Security
+  currencyId: Long
+  currencyWithMarketData: Security
+  days: Long!
+  distributions: Float!
+  duration: Float!
+  exPost3rdCostCat1: Float!
+  exPost3rdCostCat10: Float!
+  exPost3rdCostCat2: Float!
+  exPost3rdCostCat3: Float!
+  exPost3rdCostCat4: Float!
+  exPost3rdCostCat5: Float!
+  exPost3rdCostCat6: Float!
+  exPost3rdCostCat7: Float!
+  exPost3rdCostCat8: Float!
+  exPost3rdCostCat9: Float!
+  exPostPfCostCat1: Float!
+  exPostPfCostCat10: Float!
+  exPostPfCostCat2: Float!
+  exPostPfCostCat3: Float!
+  exPostPfCostCat4: Float!
+  exPostPfCostCat5: Float!
+  exPostPfCostCat6: Float!
+  exPostPfCostCat7: Float!
+  exPostPfCostCat8: Float!
+  exPostPfCostCat9: Float!
+  exPostSecCostCat1: Float!
+  exPostSecCostCat10: Float!
+  exPostSecCostCat2: Float!
+  exPostSecCostCat3: Float!
+  exPostSecCostCat4: Float!
+  exPostSecCostCat5: Float!
+  exPostSecCostCat6: Float!
+  exPostSecCostCat7: Float!
+  exPostSecCostCat8: Float!
+  exPostSecCostCat9: Float!
+  exPostSecurityCostCat1: Float!
+  exPostSecurityCostCat10: Float!
+  exPostSecurityCostCat2: Float!
+  exPostSecurityCostCat3: Float!
+  exPostSecurityCostCat4: Float!
+  exPostSecurityCostCat5: Float!
+  exPostSecurityCostCat6: Float!
+  exPostSecurityCostCat7: Float!
+  exPostSecurityCostCat8: Float!
+  exPostSecurityCostCat9: Float!
+  expectedAmount: Float!
+  expectedAmountCalculated: Boolean!
+  expectedTradeAmount: Float!
+  exposure: Float!
+  exposureStart: Float!
+  formatDecimal: Int!
+  futureContract: Int!
+  fxRate(quoteCurrency: String): Float
+  getdAccrual: Float!
+  getdAccrualSec: Float!
+  getdAccruedInterest: Float!
+  getdAccruedInterestSec: Float!
+  getdAmount: Float!
+  getdCommitment: Float!
+  getdCommitmentSec: Float!
+  getdCommitmentTotal: Float!
+  getdCommitmentTotalSec: Float!
+  getdCost: Float!
+  getdCostSec: Float!
+  getdDistributions: Float!
+  getdExPost3rdCostCat1: Float!
+  getdExPost3rdCostCat10: Float!
+  getdExPost3rdCostCat2: Float!
+  getdExPost3rdCostCat3: Float!
+  getdExPost3rdCostCat4: Float!
+  getdExPost3rdCostCat5: Float!
+  getdExPost3rdCostCat6: Float!
+  getdExPost3rdCostCat7: Float!
+  getdExPost3rdCostCat8: Float!
+  getdExPost3rdCostCat9: Float!
+  getdExPostPfCostCat1: Float!
+  getdExPostPfCostCat10: Float!
+  getdExPostPfCostCat2: Float!
+  getdExPostPfCostCat3: Float!
+  getdExPostPfCostCat4: Float!
+  getdExPostPfCostCat5: Float!
+  getdExPostPfCostCat6: Float!
+  getdExPostPfCostCat7: Float!
+  getdExPostPfCostCat8: Float!
+  getdExPostPfCostCat9: Float!
+  getdExPostSecCostCat1: Float!
+  getdExPostSecCostCat10: Float!
+  getdExPostSecCostCat2: Float!
+  getdExPostSecCostCat3: Float!
+  getdExPostSecCostCat4: Float!
+  getdExPostSecCostCat5: Float!
+  getdExPostSecCostCat6: Float!
+  getdExPostSecCostCat7: Float!
+  getdExPostSecCostCat8: Float!
+  getdExPostSecCostCat9: Float!
+  getdExPostSecurityCostCat1: Float!
+  getdExPostSecurityCostCat10: Float!
+  getdExPostSecurityCostCat2: Float!
+  getdExPostSecurityCostCat3: Float!
+  getdExPostSecurityCostCat4: Float!
+  getdExPostSecurityCostCat5: Float!
+  getdExPostSecurityCostCat6: Float!
+  getdExPostSecurityCostCat7: Float!
+  getdExPostSecurityCostCat8: Float!
+  getdExPostSecurityCostCat9: Float!
+  getdExposure: Float!
+  getdMarketTradeAmount: Float!
+  getdMarketValue: Float!
+  getdOrigSoldProfit: Float!
+  getdOrigSoldProfitSec: Float!
+  getdOrigTradeAmount: Float!
+  getdOrigValueChange: Float!
+  getdOrigValueChangeSec: Float!
+  getdOtherCost: Float!
+  getdOtherCostSec: Float!
+  getdPaidAccrual: Float!
+  getdPaidAccrualSec: Float!
+  getdPaidAccruedInterest: Float!
+  getdPaidAccruedInterestSec: Float!
+  getdPaidInCapital: Float!
+  getdProfit: Float!
+  getdProfitSec: Float!
+  getdPurchaseAmount: Float!
+  getdPurchaseTradeAmount: Float!
+  getdRecTradeAmount: Float!
+  getdRecValueChange: Float!
+  getdRecordSoldProfit: Float!
+  getdSoldAmount: Float!
+  getdSoldProfit: Float!
+  getdSoldProfitSec: Float!
+  getdSoldTradeAmount: Float!
+  getdTradeAmount: Float!
+  getdValueChange: Float!
+  getdValueChangeSec: Float!
+  id: Long
+  includeInTotal: Int!
+  indexedValue: Float!
+  indexedValueChange: Float!
+  indexedValueStart: Float!
+  invert: Int!
+  key: String
+  linkedIndexWithMarketData: Security
+  marketDate: String
+  marketFxRate: Float!
+  marketFxRateStart: Float!
+  marketFxRateView: Float!
+  marketTradeAmount: Float!
+  marketTradeAmountStart: Float!
+  marketUnitPrice: Float!
+  marketUnitPriceDate: String
+  marketUnitPriceDirty: Float!
+  marketUnitPriceDirtyView: Float!
+  marketUnitPriceView: Float!
+  marketValue: Float!
+  marketValueStart: Float!
+  multiplierView: Float!
+  negativeExposure: Float!
+  negativeNetCashflow: Float!
+  negativeNetCashflowSec: Float!
+  negativePfNetCashflow: Float!
+  netCashflow: Float!
+  netCashflowSec: Float!
+  origFxRate: Float!
+  origSoldProfit: Float!
+  origSoldProfitSec: Float!
+  origTradeAmount: Float!
+  origUnitPrice: Float!
+  origUnitPriceView: Float!
+  origValueChangeAbsolute: Float!
+  origValueChangeAbsoluteSec: Float!
+  origValueChangeRelative: Float!
+  otherCost: Float!
+  paidAccrual: Float!
+  paidAccrualSec: Float!
+  paidAccruedInterest: Float!
+  paidInCapital: Float!
+  portfolio: Portfolio
+  portfolioId: Long
+  portfolioReport: PortfolioReport
+  portfolioReportId: Long
+  "Finds purchase lots that are linked to the given PortfolioReportItem. The filterParams parameter can be provided to further customize the result."
+  portfolioReportSubItems(filterParams: SubItemFilterParamsInput): [PortfolioReportSubItem]
+  positiveExposure: Float!
+  positiveNetCashflow: Float!
+  positiveNetCashflowSec: Float!
+  positivePfNetCashflow: Float!
+  previousPortfolioReportItem: PortfolioReportItem
+  processedSubItems: Map_String_List_PortfolioReportSubItemScalar
+  profit: Float!
+  purchaseAmount: Float!
+  purchaseFxRate: Float!
+  purchaseTradeAmount: Float!
+  purchaseUnitPrice: Float!
+  purchaseUnitPriceView: Float!
+  recValueChangeAbsolute: Float!
+  recValueChangeAbsoluteSec: Float!
+  recValueChangeRelative: Float!
+  recordFxRate: Float!
+  recordSoldProfit: Float!
+  recordTradeAmount: Float!
+  recordUnitPrice: Float!
+  recordUnitPriceView: Float!
+  security: Security
+  securityAmountDecimalCount: Int!
+  securityId: Long
+  securityName: String
+  securityWithMarketData: Security
+  shareOfParent: Float!
+  shareOfPortfolio: Float!
+  shareOfPortfolioStart: Float!
+  soldAmount: Float!
+  soldFxRate: Float!
+  soldProfit: Float!
+  soldProfitSec: Float!
+  soldTradeAmount: Float!
+  soldUnitPrice: Float!
+  subPortfolioReportItems: [PortfolioReportSubItem]
+  tempAccrualAmount: Float!
+  tempAccruedInterestAmount: Float!
+  totalCost: Float!
+  tradeAmount: Float!
+  tradeAmountAfterOpenTradeOrders: Float!
+  tradeAmountBeforeUnsettledTransactions: Float!
+  tradeAmountFromOpenTradeOrders: Float!
+  tradeAmountFromSentTradeOrders: Float!
+  tradeOrders(settlementStartDate: String typeCodes: [String] orderStatus: String transactionStartDate: String securityCode: String transactionDate: String startTrId: Long issuer: String tags: [String] typeCode: String reference: String settlementEndDate: String portfolioType: String transactionEndDate: String resultSize: Int extId: String shortName: String currencyId: Long "0 = no aggregation, 1 = grouped by type, 2 = all together" aggregationMode: Int = 0): [Transaction]
+  transactions(settlementStartDate: String hasPaymentDate: String typeCodes: [String] endDate: String startTrId: Long tags: [String] typeCode: String reference: String settlementEndDate: String resultSize: Int extId: String currencyId: Long "0 = no aggregation, 1 = grouped by type, 2 = all together" aggregationMode: Int = 0 startDate: String status: String): [Transaction]
+  underlyingSecurityWithMarketData: Security
+  unitPrice: Float!
+  unitPriceView: Float!
+  unprocessedTransactions: Map_String_List_TransactionScalar
+  valueChangeAbsolute: Float!
+  valueChangeAbsoluteSec: Float!
+  valueChangeRelative: Float!
+  version: Int
+  yieldToMaturity: Float!
+}
+
+type PortfolioReportSubItem {
+  account: Account
+  accountId: Long
+  accrual: Float!
+  accruedCost: Float!
+  accruedCostSec: Float!
+  accruedInterest: Float!
+  accruedProfit: Float!
+  amount: Float!
+  closeExPost3rdCostCat1: Float!
+  closeExPost3rdCostCat10: Float!
+  closeExPost3rdCostCat2: Float!
+  closeExPost3rdCostCat3: Float!
+  closeExPost3rdCostCat4: Float!
+  closeExPost3rdCostCat5: Float!
+  closeExPost3rdCostCat6: Float!
+  closeExPost3rdCostCat7: Float!
+  closeExPost3rdCostCat8: Float!
+  closeExPost3rdCostCat9: Float!
+  closeExPostPfCostCat1: Float!
+  closeExPostPfCostCat10: Float!
+  closeExPostPfCostCat2: Float!
+  closeExPostPfCostCat3: Float!
+  closeExPostPfCostCat4: Float!
+  closeExPostPfCostCat5: Float!
+  closeExPostPfCostCat6: Float!
+  closeExPostPfCostCat7: Float!
+  closeExPostPfCostCat8: Float!
+  closeExPostPfCostCat9: Float!
+  closeExPostSecCostCat1: Float!
+  closeExPostSecCostCat10: Float!
+  closeExPostSecCostCat2: Float!
+  closeExPostSecCostCat3: Float!
+  closeExPostSecCostCat4: Float!
+  closeExPostSecCostCat5: Float!
+  closeExPostSecCostCat6: Float!
+  closeExPostSecCostCat7: Float!
+  closeExPostSecCostCat8: Float!
+  closeExPostSecCostCat9: Float!
+  closingDate: String
+  commitment: Float!
+  commitmentTotal: Float!
+  cost: Float!
+  costSec: Float!
+  currency: Security
+  currencyId: Long
+  deductedPurchaseTradeAmount: Float!
+  deductedPurchaseTradeAmountNeg: Float!
+  deductedPurchaseTradeAmountPos: Float!
+  description: String
+  distributions: Float!
+  duration: Float!
+  formatDecimal: Int!
+  id: Long
+  indexedValue: Float!
+  indexedValueChange: Float!
+  indexedValueStart: Float!
+  invert: Int!
+  key: String
+  lotNumber: Int!
+  marketDate: String
+  marketFxRate: Float!
+  marketTradeAmount: Float!
+  marketTradeAmountStart: Float!
+  marketUnitPrice: Float!
+  multiplierView: Float!
+  openAmount: Float!
+  openExPost3rdCostCat1: Float!
+  openExPost3rdCostCat10: Float!
+  openExPost3rdCostCat2: Float!
+  openExPost3rdCostCat3: Float!
+  openExPost3rdCostCat4: Float!
+  openExPost3rdCostCat5: Float!
+  openExPost3rdCostCat6: Float!
+  openExPost3rdCostCat7: Float!
+  openExPost3rdCostCat8: Float!
+  openExPost3rdCostCat9: Float!
+  openExPostPfCostCat1: Float!
+  openExPostPfCostCat10: Float!
+  openExPostPfCostCat2: Float!
+  openExPostPfCostCat3: Float!
+  openExPostPfCostCat4: Float!
+  openExPostPfCostCat5: Float!
+  openExPostPfCostCat6: Float!
+  openExPostPfCostCat7: Float!
+  openExPostPfCostCat8: Float!
+  openExPostPfCostCat9: Float!
+  openExPostSecCostCat1: Float!
+  openExPostSecCostCat10: Float!
+  openExPostSecCostCat2: Float!
+  openExPostSecCostCat3: Float!
+  openExPostSecCostCat4: Float!
+  openExPostSecCostCat5: Float!
+  openExPostSecCostCat6: Float!
+  openExPostSecCostCat7: Float!
+  openExPostSecCostCat8: Float!
+  openExPostSecCostCat9: Float!
+  openTradeAmount: Float!
+  openingDate: String
+  openingSettlementDate: String
+  origOpenTradeAmount: Float!
+  origPurchaseDate: String
+  origPurchaseFxRate: Float!
+  origPurchaseTradeAmount: Float!
+  origPurchaseUnitPrice: Float!
+  origPurchaseUnitPriceView: Float!
+  origSoldDate: String
+  origSoldFxRate: Float!
+  origSoldProfit: Float!
+  origSoldProfitSec: Float!
+  origSoldTradeAmount: Float!
+  origSoldUnitPrice: Float!
+  origSoldUnitPriceView: Float!
+  otherCost: Float!
+  paidInCapital: Float!
+  portfolio: Portfolio
+  portfolioId: Long
+  purchaseAccrual: Float!
+  purchaseAccruedInterest: Float!
+  purchaseAmount: Float!
+  purchaseCashflow: Float!
+  purchaseCost: Float!
+  purchaseCostSec: Float!
+  purchaseDate: String
+  purchaseFxRate: Float!
+  purchaseTradeAmount: Float!
+  purchaseTransactionId: String
+  purchaseUnitPrice: Float!
+  purchaseUnitPriceView: Float!
+  realizedProfit: Int!
+  realizedProfitDate: String
+  recordOpenTradeAmount: Float!
+  recordPurchaseDate: String
+  recordPurchaseFxRate: Float!
+  recordPurchaseTradeAmount: Float!
+  recordPurchaseUnitPrice: Float!
+  recordPurchaseUnitPriceView: Float!
+  recordSoldDate: String
+  recordSoldFxRate: Float!
+  recordSoldProfit: Float!
+  recordSoldProfitSec: Float!
+  recordSoldTradeAmount: Float!
+  recordSoldUnitPrice: Float!
+  recordSoldUnitPriceView: Float!
+  security: Security
+  securityAmountDecimalCount: Int!
+  securityId: Long
+  shareOfParent: Float!
+  shareOfPortfolio: Float!
+  soldAccrual: Float!
+  soldAccruedInterest: Float!
+  soldAmount: Float!
+  soldCashflow: Float!
+  soldCost: Float!
+  soldCostSec: Float!
+  soldDate: String
+  soldFxRate: Float!
+  soldProfit: Float!
+  soldProfitSec: Float!
+  soldTradeAmount: Float!
+  soldTransactionId: String
+  soldUnitPrice: Float!
+  soldUnitPriceView: Float!
+  startTradeAmount: Float!
+  transactionId: String
+  valueChangeAbsolute: Float!
+  valueChangeRelative: Float!
+  version: Int
+  yieldToMaturity: Float!
+}
+
+type PortfolioType {
+  code: String
+  id: Long
+  name: String
+  names: String
+  namesAsMap: Map_String_StringScalar
+  roles: [Role]
+  rolesString: String
+  version: Int
+}
+
+input PriceDTOInput {
+  accrual: String
+  "@NotNull Close price. For bonds, unit price can be set with % (e.g. 3.45%), when the system calculates the price according to YTM automatically."
+  close: String
+  close1: String
+  close2: String
+  close3: String
+  close4: String
+  close5: String
+  "@Nullable Currency of the security (optional, used to identify the security if there are two securities with the same ISIN-code but different currency)."
+  currency: String
+  delta: String
+  "@NotNull yyyy-MM-dd"
+  marketDate: String
+  "@NotNull Code used to identify the security in the system."
+  updateCode: String
+}
+
+type Profile2 {
+  attribute(attributeKey: String): ProfileAttribute2
+  attributeValue(attributeKey: String): ObjectScalar
+  attributeValueAsDate(attributeKey: String): String
+  attributeValueAsJson(attributeKey: String): Json
+  attributes: [ProfileAttribute2]
+  createDate: String
+  createOrganizationId: String
+  createUserId: String
+  createUserName: String
+  findContactById(attributeKeyForContactId: String): Contact
+  id: Long
+  isAfterToday(attributeKey: String): Boolean!
+  isBeforeToday(attributeKey: String): Boolean!
+  "Next business date based on the data in the profile. The following keys are expected to be found: ''"
+  nextBusinessDay(profileKeyForBusinessDayConvention: String profileKeyForPreviousDate: String profileKeyForRollConvention: String profileKeyForDelayInDays: String profileKeyForCalendar: String profileKeyForStartDate: String profileKeyForFrequency: String): String
+  profileKey: String
+  updateDate: String
+  updateOrganizationId: String
+  updateUserId: String
+  updateUserName: String
+  version: Int
+}
+
+type ProfileAttribute2 {
+  attributeKey: String
+  booleanValue: Boolean
+  dateValue: String
+  defaultValue: ObjectScalar
+  doubleValue: Float
+  id: Long
+  intValue: Int
+  stringValue: String
+  version: Int
+}
+
+"Query root"
+type Query {
+  fxRate(date: String quoteCurrency: String baseCurrency: String): Float
+  securities(invert: String tradeCode: String securityCode: String source: String issuer: String tags: [String] securitySubType: String countryCode: String securityType: String resultSize: Int updateCode2: String name: String updateCode3: String priceFromSecurity: String currencyCode: String exchangeCode: String updateCode1: String isinCode: String status: String): [Security]
+  "Runs analytics+ analysis against the given list of portfolios. The list of portfolios is first filtered based on visibility and as a result, the analysis only includes portfolios that user can see."
+  analytics("Run analysis based on only portfolio level data. This is faster, if you do not need position level values." withoutPositionData: Boolean = false "Analysis on 'virtual' fund portfolio built from the fund securities. It calculates the fund's performance based on the individual share classes." fundPortfolio: Boolean = false "AnalysisParamsDTO" parameters: AnalysisParamsDTOInput): AnalysisDTO
+  security(id: Long): Security
+  portfolio(id: Long): Portfolio
+  contact(id: Long): Contact
+  portfoliosByGroup(limit: Int = 0 groupCode: String): [Portfolio]
+  portfolios(updateDate: String ruleSetCode: String languageCode: String creationDate: String modelPortfolioShortName: String tags: [String] typeCode: String juridicalCode: String bookEntry: String countryCode: String resultSize: Int custodyCode: String name: String closeMethod: String ids: [String] extId: String valuationMethod: String shortName: String currencyCode: String startDate: String status: String): [Portfolio]
+  "Next business date based on the data in the profile. The following keys are expected to be found: ''"
+  nextBusinessDay("P1D (default),P1W,,P2W,P4W,,P13W,P52W,P1M,P2M,P3M,P4M,P6M,P12M,TERM" frequencyCode: String = "P1D" "Needed if using other than P1D. Following (default),ModifiedFollowing,ModifiedFollowingBiMonthly,ModifiedPreceding,Nearest,NoAdjust,Preceding" businessDayConventionCode: String = "Following" "Needed if using other than P1D. NONE (default), DAY_1 - DAY_30, DAY_MON - DAY_SUN, EOM, IMM, IMMAUD, IMMCAD, IMMNZD, SFE, TBILL" rollConventionCode: String = "NONE" "Holiday calendar code from FA's preferences or 'NoHolidays' or 'Sat\/Sun'. Default is 'Sat\/Sun'." calendarCode: String = "Sat\/Sun" "Previous business day relative to which the next business day is deterined. Uses current date, if left out." previousDate: String "Default is 0. Next business day after this many days. E.g. next business day of Monday is Tuesday. If delay in days is 1, then the next would be Wednesday. " delayInDays: Int = 0 "Date from which periods starts. If using P1D, can be left out." startDate: String): String
+  portfoliosByIds(ids: [Long]): [Portfolio]
+  portfolioReport(use15minDelayedPrice: Boolean = false loadTransactions: Boolean = false calculateExpectedAmountBasedUnsettledTransactions: Boolean = false reportDate: String excludeTradeOrderStatusOpen: Boolean = false useLatestPositionsAmount: Boolean = false calculateExpectedAmountBasedOpenTradeOrders: Boolean = false ids: [Long] "If true, position amounts and trade amounts are adjusted to equal the expected values" adjustPositionsBasedOnOpenTradeOrders: Boolean = false): PortfolioReport
+  transactions(settlementStartDate: String hasPaymentDate: String typeCodes: [String] endDate: String securityCode: String startTrId: Long tags: [String] typeCode: String reference: String settlementEndDate: String portfolioId: Long resultSize: Int portfolioIds: [Long] extId: String currencyId: Long "0 = no aggregation, 1 = grouped by type, 2 = all together" aggregationMode: Int = 0 startDate: String status: String): [Transaction]
+  "Loads a specific transaction or trade order based on its id."
+  transactionsByIds(ids: [Long]): [Transaction]
+  "Finds purchase lots based on various filters defined in the parameter object."
+  portfolioReportSubItems(filterParams: SubItemFilterParamsInput): [PortfolioReportSubItem]
+  tradeOrders(settlementStartDate: String typeCodes: [String] orderStatus: String transactionStartDate: String securityCode: String transactionDate: String startTrId: Long issuer: String tags: [String] typeCode: String reference: String settlementEndDate: String portfolioType: String transactionEndDate: String portfolioId: Long resultSize: Int portfolioIds: [Long] extId: String shortName: String currencyId: Long "0 = no aggregation, 1 = grouped by type, 2 = all together" aggregationMode: Int = 0): [Transaction]
+  contacts(address: String contactTypeCode: String city: String contactId: String postcode: String contactSubTypeCode: String identityCode: String tags: [String] nationalityCode: String classificationCode: String juridicalCode: String countryCode: String resultSize: Int name: String ids: [String] langugageCode: String extId: String status: String): [Contact]
+  "Loads a specific transaction or trade order based on its id."
+  transaction(id: Long): Transaction
+}
+
+type Redemption {
+  date: String
+  id: Long
+  redemptionPercent: Float!
+  security: Security
+  version: Int
+}
+
+type Reporting {
+  id: Long
+  version: Int
+}
+
+type Role {
+  name: String
+}
+
+type Rule {
+  account: RulesetAccount
+  accruedInterestFromPurchase: Int!
+  classType1: ClassType
+  classType2: ClassType2
+  classType3: ClassType3
+  classType4: ClassType4
+  classType5: ClassType5
+  country: Country
+  credit: Int!
+  debit: Int!
+  exchange: Exchange
+  hankintahinta: Int!
+  hinta: Int!
+  id: Long
+  issuer: Contact
+  kertyneet_korot: Int!
+  lossWithoutAccruedInterest: Int!
+  lossWithoutCost: Int!
+  nominal: Int!
+  palkkio: Int!
+  profitWithoutAccruedInterest: Int!
+  profitWithoutCost: Int!
+  purchasePriceOrig: Int!
+  purchasePriceWithoutCost: Int!
+  ruleSet: RuleSet
+  ruleValue: String
+  rulesetAccountSet: String
+  sbt: String
+  security: Security
+  sst: SecuritySubType
+  st: SecurityType
+  tappio: Int!
+  tax1: Int!
+  tax2: Int!
+  taxTypeCode: String
+  toimitusmaksu: Int!
+  tt: TransactionType
+  useTtDate: Int!
+  valuutaTappio: Int!
+  valuutaVoitto: Int!
+  vero: Int!
+  version: Int
+  voitto: Int!
+  yhteishinta: Int!
+}
+
+type RuleSet {
+  accountSet: RulesetAccountSet
+  code: String
+  id: Long
+  name: String
+  rules: [Rule]
+  version: Int
+}
+
+type RulesetAccount {
+  accountSet: RulesetAccountSet
+  id: Long
+  name: String
+  number: String
+  version: Int
+}
+
+type RulesetAccountSet {
+  accounts: [RulesetAccount]
+  id: Long
+  name: String
+  version: Int
+}
+
+type SecPerformance {
+  get_noBenchmark: Float!
+}
+
+type Security {
+  LINKEDINDEX_CALCMODE_DIRECT: String
+  LINKEDINDEX_CALCMODE_INTERPOLATED: String
+  accrualCalendar: String
+  allocationGroupedByDateAndGroup: Map_String_NavigableMap_Date_List_AllocationScalar
+  allocations: [Allocation]
+  amountDecimalCount: Int!
+  archiveData(date: String endDate: String tag: String! startDate: String): [ArchiveData]
+  archiveDatum(date: String tag: String!): ArchiveData
+  auditableValues: LinkedHashMap_String_StringScalar
+  baseCurrency: Security
+  baseInstrument: Security
+  blockSize: Float!
+  bond(date: String): Bond
+  businessDayConvention: String
+  callDate: String
+  classType1: ClassType
+  classType2: ClassType2
+  classType3: ClassType3
+  classType4: ClassType4
+  classType5: ClassType5
+  coefficientCalculation: Int!
+  contractDetails: String
+  convexity: Float!
+  country: Country
+  coupon: Float!
+  couponFrequency: String
+  coupons: [Coupon]
+  currency: Security
+  description: String
+  descriptions: String
+  descriptionsAsMap: Map_String_StringScalar
+  enableSettlementDateOffset: Boolean!
+  exAnteSecCostCat1: Float!
+  exAnteSecCostCat10: Float!
+  exAnteSecCostCat2: Float!
+  exAnteSecCostCat3: Float!
+  exAnteSecCostCat4: Float!
+  exAnteSecCostCat5: Float!
+  exAnteSecCostCat6: Float!
+  exAnteSecCostCat7: Float!
+  exAnteSecCostCat8: Float!
+  exAnteSecCostCat9: Float!
+  exCostDate: String
+  exCouponPeriod: Int!
+  exPostSecCostCat1: Float!
+  exPostSecCostCat10: Float!
+  exPostSecCostCat2: Float!
+  exPostSecCostCat3: Float!
+  exPostSecCostCat4: Float!
+  exPostSecCostCat5: Float!
+  exPostSecCostCat6: Float!
+  exPostSecCostCat7: Float!
+  exPostSecCostCat8: Float!
+  exPostSecCostCat9: Float!
+  exchange: Exchange
+  figureTargetType: [String]
+  figures: String
+  figuresAsObject: KeyFiguresDTO
+  firstCouponDate: String
+  firstRedemptionDate: String
+  fxRate(date: String quoteCurrency: String): Float
+  fxRateAgainstLinkedPortfolio(date: String): Float
+  groupMapByCode: Map_String_GroupScalar
+  groupTag(tagGroup: String): String
+  holidayCalendar: String
+  id: Long
+  indexBaseValue: Float!
+  invert: Int!
+  isinCode: String
+  issueDate: String
+  issuePrice: Float!
+  issuer: Contact
+  issuerDescription: String
+  kickBackPercentage: Float!
+  label: String
+  latestMarketData(date: String): MarketDataObservation
+  latestMarketDataObservation: MarketDataObservation
+  linkedIndex: Security
+  linkedPortfolio: Portfolio
+  macaulayDuration: Float!
+  managementFee: Float!
+  managementFeePercentage: Float!
+  market: String
+  marketDataHistory("Time period code to define the start date for the history" timePeriodCode: String startDate: String): [MarketDataObservation]
+  marketDataObservations: [MarketDataObservation]
+  marketDataObservationsMap: NavigableMap_Date_MarketDataObservationScalar
+  maturityDate: String
+  maturityPrice: Float!
+  maxManagementFee: Float!
+  maxPaymentFee: Float!
+  minManagementFee: Float!
+  minPaymentFee: Float!
+  minTradeAmount: Float!
+  modifiedDuration: Float!
+  multiplier: Float!
+  multiplierView: Float!
+  name: String
+  names: String
+  namesAsMap: Map_String_StringScalar
+  offsetDays: Int!
+  paymentFee: Float!
+  paymentFeePercentage: Float!
+  positions(date: String valuatePositions: Boolean = false): [PortfolioReportItem]
+  priceFromSecurity: Security
+  profile: Profile2
+  profileDataString: String
+  rating: String
+  redemptionFrequency: String
+  redemptions: [Redemption]
+  referenceIndexCalculationMode: String
+  referenceIndexConvention: String
+  referenceIndexLag1: Long
+  referenceIndexLag2: Long
+  rollConvention: String
+  securityCode: String
+  securityExCost: [SecurityExCost]
+  securityExCostMap: NavigableMap_Date_SecurityExCostScalar
+  securitySubType: SecuritySubType
+  settlement: Settlement
+  settlementDateOffset: Int!
+  share: Float!
+  sortedAllocations: [Allocation]
+  source: String
+  spread: Float!
+  startUpFee: Float!
+  status: String
+  stubConvention: String
+  tags: String
+  tagsAsSet: [String]
+  tradeCode: String
+  tradeOrders(settlementStartDate: String typeCodes: [String] orderStatus: String transactionStartDate: String transactionDate: String startTrId: Long issuer: String tags: [String] typeCode: String reference: String settlementEndDate: String portfolioType: String transactionEndDate: String portfolioId: Long resultSize: Int portfolioIds: [Long] extId: String shortName: String currencyId: Long "0 = no aggregation, 1 = grouped by type, 2 = all together" aggregationMode: Int = 0): [Transaction]
+  transactions(settlementStartDate: String hasPaymentDate: String typeCodes: [String] endDate: String startTrId: Long tags: [String] typeCode: String reference: String settlementEndDate: String portfolioId: Long resultSize: Int portfolioIds: [Long] extId: String currencyId: Long "0 = no aggregation, 1 = grouped by type, 2 = all together" aggregationMode: Int = 0 startDate: String status: String): [Transaction]
+  type: SecurityType
+  typeOrder: Int!
+  underlingSecurity: Security
+  updateCode: String
+  updateCode1: String
+  updateCode2: String
+  updateCode3: String
+  url: String
+  url2: String
+  version: Int
+  yieldConvention: String
+  ytm: Float!
+}
+
+input SecurityDTOInput {
+  "@Nullable Please consider looking into help-desk's import security guide"
+  accrualCalendar: String
+  "@Nullable Format is <asset group code>:<date yyyy-MM-dd>: <asset type code>=<share> (defined in the system configurations) and its share separated by comma. E.g. ASSET:2013-12- 12:FINSTO=50, ASSET:2013- 12-12:USSTO=50."
+  allocations: String
+  "@NotNull Base currency of the currency cross security, define with the currency code.\nBase currency is only available for securities of the type \"Currency cross\" - for \"Currency cross\" type securities, base currency is a mandatory field!\n"
+  baseCurrency: String
+  "@Nullable Security code of another security as a base instrument, can be used for example to calculate fixings with a separate process. Must be an existing security in the system"
+  baseInstrument: String
+  "@Nullable Number, describing, how many units is one trading block."
+  blockSize: String
+  "@Nullable Define with a code:\nModifiedFollowing = Modified following (without crossing month end) Nearest = Nearest ModifiedPreceding = Modified preceding (without crossing month start) Following = Following ModifiedFollowingBiMonthly = Modified following (without crossing mid-month or month end)\nNoAdjust = No adjustment Preceding = Preceding\n"
+  businessDayConvention: String
+  "@Nullable yyyy-MM-dd"
+  callDate: String
+  "@Nullable Describes a classification 2 for the security with a code. Code\/name values for classifications are defined in the system."
+  classType2: String
+  "@Nullable Describes a classification 3 for the security with a code. Code\/name values for classifications are defined in the system.\n"
+  classType3: String
+  "@Nullable Describes a classification 4 for the security with a code. Code\/name values for classifications are defined in the system.\n"
+  classType4: String
+  "@Nullable Describes a classification 5 for the security with a code. Code\/name values for classifications are defined in the system.\n"
+  classType5: String
+  "@Nullable Describes a classification 1 for the security with a code. Code\/name values for classifications are defined in the system.\n"
+  classtype: String
+  "@Nullable Define as date-value pairs as a comma-separated list with the format <yyyy-MM-dd>= <value>,<yyyy-MM-dd>= <value>. E.g. 2019-01- 01=7.1,2019-04-01=1.1\n"
+  convexity: String
+  "@Nullable Country code (configured in the system)\n"
+  country: String
+  "@Nullable Fixed coupon rate percentage. E.g. 5 => 5 %"
+  coupon: String
+  "@Nullable Define with a code (from FA 3.1 onward):\nP1D = Daily\nP1W = Weekly\nP2W = Every two weeks P4W = Every four weeks P13W = Every 13 weeks P26W = Every 26 weeks P52W = Every 52 weeks P1M = Monthly\nP2M = Every two months P3M = Every three months P4M = Every four months P6M = Every six months P12M = Annually\nTERM = Once"
+  couponFrequency: String
+  "@Nullable From FA 2.3 onward, importing a coupon with an existing date will update the coupon instead of creating a duplicate one.\n"
+  coupons: String
+  "@NotNull Currency of the security, define with the currency code."
+  currency: String
+  "@Nullable Description for the security\n"
+  description: String
+  "@Nullable Define as a number:\n1 = Enabled\n0 = Not enabled"
+  enableSettlementDateOffset: String
+  "@Nullable Define the ex-coupon period as a number of days"
+  exCouponPeriod: String
+  "@Nullable Market place code (configured in the system)\n"
+  exchange: String
+  "@Nullable yyyy-MM-dd"
+  firstCouponDate: String
+  "@Nullable yyyy-MM-dd"
+  firstRedemptionDate: String
+  "@Nullable Define with the holiday calendar code.\nBuilt-in holiday calendars' codes "
+  holidayCalendar: String
+  "@Nullable Base value used when calculating coefficient for the transaction or market price versus the linked index"
+  indexBaseValue: String
+  "@Nullable Define as a number:\n0 = Direct\n1 = Invert\n2 = In its own currency\nIf no value is filled in, the default value 0 \"Direct\" is used."
+  invert: String
+  "@Nullable ISIN code"
+  isinCode: String
+  "@Nullable yyyy-MM-dd"
+  issueDate: String
+  "@Nullable Security issue price as a number "
+  issuePrice: String
+  "@Nullable Issuer of the security (use contact ID of the issuer saved in the system). If no contact is found, the issuer value is saved as text in the \"Issuer description\" field instead."
+  issuer: String
+  "@Nullable Define the key figure code and individual observations as date-value pairs as a comma-separated list with the format <code>=<date:yyyy-MM-dd>=<value>,<date:yyyy-MM-dd>=<value>:<code>=<date:yyyy-MM-dd>=<value>,...\nE.g. AAA=2009-01-01=1.9,2010-01-01=1.10:TAX=2007-01-01=1,2010-01-01=2\nIf you want to add new observations to the list while keeping the existing values in the system, define three stars and a colon (***:) in the beginning of the syntax."
+  keyFigures: String
+  "@Nullable Kickback fee percentage. 5 =>5%"
+  kickbackPercentage: String
+  "@Nullable Linked index is used with e.g. index linked bonds. Security code of another security whose price is used linked security. Must be an existing security in the system"
+  linkedIndex: String
+  "@Nullable Define as date-value pairs as a comma-separated list with the format <yyyy-MM-dd>= <value>,<yyyy-MM-dd>= <value>. E.g. 2019-01- 01=7.1,2019-04-01=1.1\n"
+  macaulayDuration: String
+  "@Nullable Management fee in security currency"
+  managementFee: String
+  "@Nullable Management fee percentage. 10=>10%"
+  managementFeePercentage: String
+  "@Nullable Not used, use \"Market place\" (no. 15) or \"Settlement place\" (no. 55)\n"
+  market: String
+  "@Nullable yyyy-MM-dd. Maturity date of a security.\n"
+  maturityDate: String
+  "@Nullable Price in the end of the maturity as a number. In most cases 100, if applicable.\n"
+  maturityPrice: String
+  "@Nullable Maximum management fee"
+  maxManagementFee: String
+  "@Nullable Maximum payment fee"
+  maxPaymentFee: String
+  "@Nullable Minimum management fee"
+  minManagementFee: String
+  "@Nullable Minimum payment fee"
+  minPaymentFee: String
+  "@Nullable Security minimum trade amount as a number"
+  minTradeAmount: String
+  "@Nullable Define as date-value pairs as a comma-separated list with the format <yyyy-MM-dd>= <value>,<yyyy-MM-dd>= <value>. E.g. 2019-01- 01=7.1,2019-04-01=1.1"
+  modifiedDuration: String
+  "@Nullable Price divider to use when calculating with the security price. If bond prices are quoted in the market data as a percentage e.g. 101.23, then multiplier should be 100."
+  multiplier: String
+  "@Nullable Price multiplier to use when showing the security price. E.g. bond prices are quoted as a percentage (ie. multiplied by 100)\ntherefore, the multiplier for a bond should be 100. Used also when importing prices"
+  multiplierView: String
+  "@NotNull Security name"
+  name: String
+  "@Nullable Define as a number "
+  offsetDays: String
+  "@Nullable Payment fee in security currency"
+  paymentFee: String
+  "@Nullable Payment fee in percentage. 10=>10%\n"
+  paymentFeePercentage: String
+  "@Nullable Security code of the security's price from another linked security. Must be an existing security in the system."
+  priceFromSecurity: String
+  "@Nullable Security-specific profile (configured in the system). Use the following syntax to import \/ update profile information: <key>=<value>: <type>#<key>=<value>: <type> etc."
+  profileAttributes: String
+  "@Nullable Rating of the security such as AAA\n"
+  rating: String
+  "@Nullable Define with a code:\nANNUALLY SEMI_ANNUALLY QUARTERLY MONTHLY"
+  redemptionFrequency: String
+  "@Nullable \nFrom FA 2.3 onward, importing a redemption with an existing date will update the redemption instead of creating a duplicate one."
+  redemptions: String
+  "@Nullable Define as a number:\n1 = Direct 2 = Linear\nOnly available if the Reference index convention in column #64 is set to 0."
+  referenceIndexCalculationMode: String
+  "@Nullable Pre-defined Reference index convention (available from FA 2.6 onward).\nDefine as a number:\n1 = Canada, US, France, Germany, Italy, Denmark, Sweden, UK after July 2005 (2,2,3)\n2 = South Africa (2,3,4)\n3 = UK prior to July 2005 (1,3,NaN)\n4 = Finland (1,8, NaN)\n0 = Other\n"
+  referenceIndexConvention: String
+  "@Nullable Define the lag in months as a number between 1 - 12.\nOnly available if the Reference index convention in column #64 is set to 0."
+  referenceIndexlag1: String
+  "@Nullable Define the lag in months as a number between 1 - 12.\nOnly available if the Reference index convention in column #64 is set to 0."
+  referenceIndexlag2: String
+  "@Nullable DAY_1 = 1st day of the month\nDAY_2 = 2nd day of the month ...\nDAY_MON = Monday\nDAY_TUE = Tuesday...\nEOM = End of month (EOM)\nIMMNZD = First Wednesday on or after the ninth day of the month (IMMNZD)\nTBILL = Next Monday (TBILL)\nSFE = Second Friday (SFE)\nIMM = Third Wednesday (IMM)\nIMMAUD = Thursday before the second Friday (IMMAUD)\nIMMCAD = Two days before the third Wednesday (IMMCAD)\nNONE = None\n"
+  rollConvention: String
+  "@NotNull Code used to identify the security in the system."
+  securityCode: String
+  "@Nullable Security-specific Ex-ante \/ Ex-post costs.\nUse the syntax <date 1>: <cost category code 1>= <cost percentage as a number>: <cost category code 2>=<cost percentage as a number>, <date 2>:<cost category code 1>=<cost percentage as a number>: <cost category code 2>= <cost percentage as a number>."
+  securityExCosts: String
+  "@Nullable Settlement place code (configured in the system)"
+  settlement: String
+  "@Nullable Define the settlement date offset as a number of days"
+  settlementDateOffset: String
+  "@Nullable Security total outstanding amount as a number"
+  share: String
+  "@Nullable Security spread as a number, can be used for example to calculate fixings with the base instrument with a separate process"
+  spread: String
+  "@Nullable Start up fee in security currency"
+  startUpFee: String
+  "@NotNull Define with a code:\nACTIVE PASSIVE CLOSED"
+  status: String
+  "@Nullable Define with a code:\nNone = None\nShortInitial = Short initial LongInitial = Long initial SmartInitial = Smart initial ShortFinal = Short final LongFinal = Long final SmartFinal = Smart final Both = Both"
+  stubConvention: String
+  "@Nullable Sub type code (configured in the system)\n"
+  subType: String
+  "@Nullable Comma separated list of tags. Existing tags are not replaced unless existing tag is in the same group as the new tag."
+  tags: String
+  "Define the tenor for your security with alternatives:\n1D, 2D, 3D,\n1W, 2W, 3W, 4W, 6W, 13W, 26W, 52W\n1M, 2M, 3M, 4M, 5M, 6M, 7M, 8M, 9M, 10M, 11M, 15M, 18M, 21M\n1Y, 2Y, 3Y, 4Y, 5Y, 6Y, 7Y, 8Y, 9Y, 10Y, 11Y, 12Y, 13Y, 14Y, 15Y, 20Y, 25Y, 30Y, 35Y, 40Y, 45Y, 50Y"
+  tenor: String
+  "@Nullable Trading code"
+  tradeCode: String
+  "@NotNull Type code (configured in the system)"
+  type: String
+  "@Nullable Security code of the underlying security. Used e.g. with options. Must be an existing security in the system."
+  underlySecurity: String
+  "@Nullable Update code 1 (e.g. Bloomberg code, Reuters code, SIX code, etc.)\n"
+  updateCode1: String
+  "@Nullable Update code 2 (e.g. Bloomberg code, Reuters code, SIX code, etc.)"
+  updateCode2: String
+  "@Nullable Update code 3 (e.g. Bloomberg code, Reuters code, SIX code, etc.)\n"
+  updateCode3: String
+  "@Nullable"
+  url: String
+  "@Nullable Secondary URL"
+  url2: String
+  "@Nullable Define with a code:\nGB-Bump-DMO = UK BUMP\/DMO method US-Street = US street DE-Bonds = German bonds JP-Simple = Japan simple yield"
+  yieldConvention: String
+  "Define as date-value pairs as a comma-separated list with the format <yyyy-MM-dd>=<value>,<yyyy-MM-dd>=<value>. E.g. 2019-01-01=7.1,2019-04-01=1.1\nIf you want to add new observations to the list while keeping the existing values in the system, define three stars and a comma (***,) in the beginning of the syntax."
+  ytm: String
+}
+
+type SecurityExCost {
+  date: String
+  exAnteSecCostCat1: Float!
+  exAnteSecCostCat10: Float!
+  exAnteSecCostCat2: Float!
+  exAnteSecCostCat3: Float!
+  exAnteSecCostCat4: Float!
+  exAnteSecCostCat5: Float!
+  exAnteSecCostCat6: Float!
+  exAnteSecCostCat7: Float!
+  exAnteSecCostCat8: Float!
+  exAnteSecCostCat9: Float!
+  exPostSecCostCat1: Float!
+  exPostSecCostCat10: Float!
+  exPostSecCostCat2: Float!
+  exPostSecCostCat3: Float!
+  exPostSecCostCat4: Float!
+  exPostSecCostCat5: Float!
+  exPostSecCostCat6: Float!
+  exPostSecCostCat7: Float!
+  exPostSecCostCat8: Float!
+  exPostSecCostCat9: Float!
+  id: Long
+  security: Security
+  version: Int
+}
+
+type SecuritySubType {
+  code: String
+  id: Long
+  value: String
+  version: Int
+}
+
+type SecurityType {
+  TWR_CALCULATION_METHOD_DEFAULT: Int!
+  TWR_CALCULATION_METHOD_EXPOSURE_BASED: Int!
+  TWR_CALCULATION_METHOD_MARKET_VALUE_BASED: Int!
+  TWR_CALCULATION_METHOD_NOT_CALCULATED: Int!
+  baseType: String
+  code: String
+  decimalCount: Int!
+  futureContract: Int!
+  groupByType: Int!
+  id: Long
+  includeInTotal: Int!
+  name: String
+  names: String
+  namesAsMap: Map_String_StringScalar
+  orderNumber: Int!
+  subTypes: [SecuritySubType]
+  transactionTypes: [TransactionType]
+  twrCalculationMethodMethod: Int!
+  valuationMethod: Int!
+  version: Int
+}
+
+type Settlement {
+  code: String
+  id: Long
+  name: String
+  version: Int
+}
+
+input SubItemFilterParamsInput {
+  accountId: Long
+  closedOnSnapshotDate: Boolean
+  closingDateEnd: String
+  closingDateStart: String
+  customConditions: Map_String_Map_String_ObjectScalar
+  hasAccruedInterest: Boolean
+  hasAccruedProfit: Boolean
+  hasRealizedProfit: Boolean
+  hasRecordSoldProfit: Boolean
+  hasSoldAmount: Boolean
+  hasSoldProfit: Boolean
+  openOnSnapshotDate: Boolean
+  openingDateEnd: String
+  openingDateStart: String
+  portfolioIds: [Long]
+  purchaseDateEnd: String
+  purchaseDateStart: String
+  purchaseTransactionId: Long
+  realizedProfitDateEnd: String
+  realizedProfitDateStart: String
+  securityId: Long
+  snapshotDate: String
+  soldDateEnd: String
+  soldDateStart: String
+  soldTransactionId: Long
+  transactionIds: [Long]
+}
+
+type TaxType {
+  cash: Int!
+  id: Long
+  name: String
+  names: String
+  namesAsMap: Map_String_StringScalar
+  profit: Int!
+  value: String
+  version: Int
+}
+
+input TradeOrderDTOInput {
+  "@Nullable NOTE! Trade orders often don't have accounts. For More Information please consider looking into help-desk's importing trade orders guide"
+  account: String
+  "@Nullable Exchange rate between trade currency and portfolio's account currency. Define AUTO to automatically use the transaction day's market data entry."
+  accountFxRate: String
+  "@Nullable Accrued interest in trade currency. For bonds, the accrued interest can be set with \"?\", when the system calculates the accrued interest automatically. Define AUTO to automatically calculate the accrued interest"
+  accruedInterest: String
+  "@NotNull \nNumber of units. Amount field only accepts the amount of decimals defined for the security type or as the block size of the security: if your file has more decimals in the amount, the amount is rounded to contain only accepted amount of decimals"
+  amount: String
+  "@Nullable ISDAActualActual, ISMAActualActual, AFBActualActual, US30360, EU30360, Actual360, Actual365Fixed, IT30360, Actual366 (used if no security defined and its a deposit)"
+  basis: String
+  "@Nullable Coefficient calculated from the linked security's price and index base value. Affects trade amount same as unit price. Define AUTO to automatically calculate coefficient on the transaction date from the linked security and index base value."
+  coefficient: String
+  "@Nullable Define the break-down of costs as a list of transaction cost data with the syntax <type>=<value>"
+  compCost1: String
+  "@Nullable Define the break-down of costs as a list of transaction cost data with the syntax <type>=<value>"
+  compCost2: String
+  "@Nullable Fee in trade currency"
+  cost: String
+  "@Nullable Credit fee in trade currency"
+  cost2: String
+  "@Nullable sum of your break-down of costs. "
+  costType1: String
+  "@Nullable Type of selected transaction cost type"
+  costType2: String
+  "@Nullable Counter (use contact ID)\n"
+  counter: String
+  "@Nullable Counter portfolio (use portfolio code)"
+  counterPortfolio: String
+  "@NotNull Trade order's trade currency code\n"
+  currency: String
+  "@Nullable Description\/comment on the trade order"
+  description: String
+  "@Nullable External trade order ID. If left empty, an external ID is generated to the trade order. In addition, system defines an internal ID as well.\n"
+  extId: String
+  "@Nullable Exchange rate for the trade order."
+  fxRate: String
+  "@Nullable \nWhether the trade order should be marked as hidden. Define as a number:\n1 = Hidden\n0 = Not hidden (default)"
+  hidden: String
+  "@Nullable Internal transaction description"
+  intInfo: String
+  "@Nullable Use the exchange code \/ market place code"
+  marketPlace: String
+  "@Nullable yyyy-MM-dd (e.g. with deposits without securities)"
+  maturityDate: String
+  "@Nullable Booked exchange rate between trade currency and portfolio's report currency. Define AUTO to automatically use the original transaction day's market data entry"
+  origFxRate: String
+  "@Nullable Booked trade amount. Define AUTO to automatically calculate the booked trade amount by multiplying the amount with transaction day's market data entry"
+  origTradeAmount: String
+  "@Nullable yyyy-MM-dd"
+  origTransactionDate: String
+  "@Nullable Booked unit price in trade currency"
+  origUnitPrice: String
+  "@NotNull String (unique ID of trade order's portfolio)"
+  parentPortfolio: String
+  "@Nullable yyyy-MM-dd"
+  paymentDate: String
+  "@Nullable Intraday priority of a trade order. -1,1,2,3..."
+  priority: String
+  "@Nullable E.g. 1:2 or 2:3.25 (used with e.g. splits). The first number is the number of units of security 1 and the second is the number of units of security 2."
+  ratio: String
+  "@Nullable Reference"
+  reference: String
+  "@Nullable Exchange rate between trade currency and portfolio's report currency. Define AUTO to automatically use the transaction day's market data entry."
+  reportFxRate: String
+  "@Nullable Security code of the trade order's security. Leave empty, if a cash trade order. In addition to security code, importing trade orders is supported with ISIN code, trade code or update codes 1 through 3"
+  security: String
+  "@Nullable Security code of the removed security (e.g. in the exchange, the one that is replaced)"
+  security2: String
+  "@Nullable Based on trade order's security type which is configured in the system. Used to define the features of a trade order.\n"
+  securityType: String
+  "@Nullable yyyy-MM-dd. In addition, use numbers between 1 and 99 to set the settlement date (the settlement date is set the inserted number of banking days after the transaction date)."
+  settlementDate: String
+  "@Nullable Use the settlement code "
+  settlementPlace: String
+  "@NotNull Define as a number:\n1 = Executable 2 = Executed 3 = Cancelled 4=Open\n5 = Accepted\n6 = In execution\n7 = Executed in the market\n8 = Rejected\n9 = Expired\n10 = Sent to execution\n11 = Settled in the market\n12 = Partially executed in the market "
+  status: String
+  "@Nullable Comma separated list of tags. Existing tags are not replaced unless existing tag is in the same group as the new tag."
+  tags: String
+  "@Nullable Tax in trade currency"
+  tax: String
+  "@Nullable Tax in trade currency"
+  tax2: String
+  "@Nullable Tax type of the trade order defined with the tax type code\n"
+  taxType: String
+  "@Nullable Tax type of the trade order defined with the tax type code\n"
+  taxType2: String
+  "@NotNull Value of the trade order in trade currency (i.e. money value of the trade order including costs, accrued interest etc.)"
+  tradeAmount: String
+  "@Nullable hh:mm:ss\nYou can also define the trade time with time zone information with the syntax of hh:mm:ssContinent\/City (e.g. 11:12:13Europe\/Helsinki, use valid java time zones) - when the trade order is imported, the trade time is converted into the server's time zone "
+  tradeTime: String
+  "@NotNull yyyy-MM-dd"
+  transactionDate: String
+  "@NotNull Type code (configured in the system). E.g. buy, sell etc."
+  type: String
+  "@NotNull Unit price is security currency (trade currency). Define AUTO to automatically use the transaction day's market data entry."
+  unitPrice: String
+}
+
+type Transaction {
+  AGGREGATIONMODEL_SUM: Int!
+  AGGREGATIONMODE_GROUPED: Int!
+  AGGREGATIONMODE_NONE: Int!
+  OrigFxRate: Float!
+  TRADEORDERTYPE_GROSSTRADEAMOUNTBASED: Int!
+  TRADEORDERTYPE_NA: Int!
+  TRADEORDERTYPE_NETTRADEAMOUNTBASED: Int!
+  TRADEORDERTYPE_NOTDEFINED: Int!
+  TRADEORDERTYPE_UNITBASED: Int!
+  account: Account
+  accountFxRate: Float!
+  accountFxRateView: Float!
+  accrual: Float!
+  accrualInAccountCurrency: Float!
+  accrualInEffective: Float!
+  accrualInPortfolioCurrency: Float!
+  accruedInterest: Float!
+  accruedInterestInAccountCurrency: Float!
+  accruedInterestInEffective: Float!
+  accruedInterestInPortfolioCurrency: Float!
+  aggregationCount: Int!
+  allCosts: Float!
+  amount: Float!
+  archiveData(date: String endDate: String tag: String! startDate: String): [ArchiveData]
+  archiveDatum(date: String tag: String!): ArchiveData
+  auditableValues: LinkedHashMap_String_StringScalar
+  baseType: String
+  basis: String
+  bookACcruedInterest: Float!
+  bookAccrual: Float!
+  bookCost: Float!
+  bookCost2: Float!
+  bookFxRate: Float!
+  bookFxRateCorrected: Float!
+  bookFxRateView: Float!
+  bookTax: Float!
+  bookTax2: Float!
+  bookTradeAmount: Float!
+  bookTransactionDate: String
+  bookUnitPrice: Float!
+  bookUnitPriceView: Float!
+  calculateCashFlow: Float!
+  calculateNetCashFlow: Float!
+  cashFlow: Float!
+  cashFlowInAccountCurrency: Float!
+  cashFlowInPortfolioCurrency: Float!
+  cashFlowWithoutCheckAccount: Float!
+  cashflowWithoutCheckAccountInAccountCurrency: Float!
+  cashflowWithoutCheckAccountInPortfolioCurrency: Float!
+  coefficient: Float!
+  combinedCashFlow: Float!
+  compCost1: String
+  compCost2: String
+  contract: Boolean!
+  contractAuditInfo: String
+  cost: Float!
+  cost1Data: [TransactionCostData]
+  cost1DataTotalValue: Float!
+  cost1InEffective: Float!
+  cost2: Float!
+  cost2Data: [TransactionCostData]
+  cost2DataTotalValue: Float!
+  cost2InEffective: Float!
+  costType1: TransactionCostType
+  costType1Code: String
+  costType2: TransactionCostType
+  costType2Code: String
+  counter: Contact
+  counterContactId: String
+  counterPortfolio: Portfolio
+  counterPortfolioShortName: String
+  currency: Security
+  currencyCode: String
+  deletionAllowedOrderStatuses: [String]
+  earliestDate: String
+  effectiveCoefficient: Float!
+  effectiveFxRate: Float!
+  effectiveFxRateCorrected: Float!
+  effectivePaymentDate: String
+  effectiveReportFxRate: Float!
+  effectiveTradeAmount: Float!
+  effectiveTradeAmountExAccruedInterest: Float!
+  effectiveTransactionDate: String
+  effectiveUnitPrice: Float!
+  exPost3rdCostCat1: Float!
+  exPost3rdCostCat10: Float!
+  exPost3rdCostCat10InAccountCurrency: Float!
+  exPost3rdCostCat10InPortfolioCurrency: Float!
+  exPost3rdCostCat1InAccountCurrency: Float!
+  exPost3rdCostCat1InPortfolioCurrency: Float!
+  exPost3rdCostCat2: Float!
+  exPost3rdCostCat2InAccountCurrency: Float!
+  exPost3rdCostCat2InPortfolioCurrency: Float!
+  exPost3rdCostCat3: Float!
+  exPost3rdCostCat3InAccountCurrency: Float!
+  exPost3rdCostCat3InPortfolioCurrency: Float!
+  exPost3rdCostCat4: Float!
+  exPost3rdCostCat4InAccountCurrency: Float!
+  exPost3rdCostCat4InPortfolioCurrency: Float!
+  exPost3rdCostCat5: Float!
+  exPost3rdCostCat5InAccountCurrency: Float!
+  exPost3rdCostCat5InPortfolioCurrency: Float!
+  exPost3rdCostCat6: Float!
+  exPost3rdCostCat6InAccountCurrency: Float!
+  exPost3rdCostCat6InPortfolioCurrency: Float!
+  exPost3rdCostCat7: Float!
+  exPost3rdCostCat7InAccountCurrency: Float!
+  exPost3rdCostCat7InPortfolioCurrency: Float!
+  exPost3rdCostCat8: Float!
+  exPost3rdCostCat8InAccountCurrency: Float!
+  exPost3rdCostCat8InPortfolioCurrency: Float!
+  exPost3rdCostCat9: Float!
+  exPost3rdCostCat9InAccountCurrency: Float!
+  exPost3rdCostCat9InPortfolioCurrency: Float!
+  exPostCostCat1: Float!
+  exPostCostCat10: Float!
+  exPostCostCat10InAccountCurrency: Float!
+  exPostCostCat10InPortfolioCurrency: Float!
+  exPostCostCat1InAccountCurrency: Float!
+  exPostCostCat1InPortfolioCurrency: Float!
+  exPostCostCat2: Float!
+  exPostCostCat2InAccountCurrency: Float!
+  exPostCostCat2InPortfolioCurrency: Float!
+  exPostCostCat3: Float!
+  exPostCostCat3InAccountCurrency: Float!
+  exPostCostCat3InPortfolioCurrency: Float!
+  exPostCostCat4: Float!
+  exPostCostCat4InAccountCurrency: Float!
+  exPostCostCat4InPortfolioCurrency: Float!
+  exPostCostCat5: Float!
+  exPostCostCat5InAccountCurrency: Float!
+  exPostCostCat5InPortfolioCurrency: Float!
+  exPostCostCat6: Float!
+  exPostCostCat6InAccountCurrency: Float!
+  exPostCostCat6InPortfolioCurrency: Float!
+  exPostCostCat7: Float!
+  exPostCostCat7InAccountCurrency: Float!
+  exPostCostCat7InPortfolioCurrency: Float!
+  exPostCostCat8: Float!
+  exPostCostCat8InAccountCurrency: Float!
+  exPostCostCat8InPortfolioCurrency: Float!
+  exPostCostCat9: Float!
+  exPostCostCat9InAccountCurrency: Float!
+  exPostCostCat9InPortfolioCurrency: Float!
+  exPostSecCostCat1: Float!
+  exPostSecCostCat10: Float!
+  exPostSecCostCat10InAccountCurrency: Float!
+  exPostSecCostCat10InPortfolioCurrency: Float!
+  exPostSecCostCat1InAccountCurrency: Float!
+  exPostSecCostCat1InPortfolioCurrency: Float!
+  exPostSecCostCat2: Float!
+  exPostSecCostCat2InAccountCurrency: Float!
+  exPostSecCostCat2InPortfolioCurrency: Float!
+  exPostSecCostCat3: Float!
+  exPostSecCostCat3InAccountCurrency: Float!
+  exPostSecCostCat3InPortfolioCurrency: Float!
+  exPostSecCostCat4: Float!
+  exPostSecCostCat4InAccountCurrency: Float!
+  exPostSecCostCat4InPortfolioCurrency: Float!
+  exPostSecCostCat5: Float!
+  exPostSecCostCat5InAccountCurrency: Float!
+  exPostSecCostCat5InPortfolioCurrency: Float!
+  exPostSecCostCat6: Float!
+  exPostSecCostCat6InAccountCurrency: Float!
+  exPostSecCostCat6InPortfolioCurrency: Float!
+  exPostSecCostCat7: Float!
+  exPostSecCostCat7InAccountCurrency: Float!
+  exPostSecCostCat7InPortfolioCurrency: Float!
+  exPostSecCostCat8: Float!
+  exPostSecCostCat8InAccountCurrency: Float!
+  exPostSecCostCat8InPortfolioCurrency: Float!
+  exPostSecCostCat9: Float!
+  exPostSecCostCat9InAccountCurrency: Float!
+  exPostSecCostCat9InPortfolioCurrency: Float!
+  executionAllowedOrderStatuses: [String]
+  extId: String
+  extIdLevel: ExtIdLevel
+  extInfo: String
+  formatDecimal: Int!
+  fxRate(quoteCurrency: String): Float
+  fxRateCorrected: Float!
+  fxRateInEffective: Float!
+  fxRateView: Float!
+  grossPrice: Float!
+  grossPriceInAccountCurrency: Float!
+  grossPriceInEffective: Float!
+  grossPriceInPortfolioCurrency: Float!
+  groupTag(tagGroup: String): String
+  hidden: Boolean!
+  id: Long
+  intId: String
+  intIdReal: String
+  intInfo: String
+  intInfoAsMaps: Map_String_ObjectScalar
+  lastModified: String
+  legacyCostSupport: Boolean!
+  linkedBuyingTransactionId: String
+  linkedTransaction: Transaction
+  manualEditingAllowedOrderStatuses: [String]
+  marketPlace: Exchange
+  marketPlaceCode: String
+  maturityDate: String
+  nonEffectCosts: Float!
+  orderStatus: String
+  origFxRateView: Float!
+  origTradeAmountInAccountCurrency: Float!
+  origTradeAmountInPortfolioCurrency: Float!
+  origTradeamount: Float!
+  origTransactionDate: String
+  origUnitPrice: Float!
+  origUnitPriceView: Float!
+  overrideFifoTransaction: Transaction
+  overrideFifoTransactionExtId: String
+  overrideFifoTransactionId: String
+  parentPortfolio: Portfolio
+  paymentDate: String
+  "Finds the given date's snapshot of purchase lots that are linked to the given transaction with the possibility to return open and\/or closed lots. Optionally, the filterParams parameter can be provided to further customize the result."
+  portfolioReportSubItems(date: String includeOpen: Boolean includeClosed: Boolean filterParams: SubItemFilterParamsInput): [PortfolioReportSubItem]
+  portfolioShortName: String
+  portfolioTypeCode: String
+  prePaidOrder: Boolean!
+  price: Float!
+  priceInAccountCurrency: Float!
+  priceInPortfolioCurrency: Float!
+  primaryContact: Contact
+  primaryContactId: String
+  primaryContactTypeCode: String
+  priority: Int!
+  processOutput: String
+  processOutputSeparator: String
+  profit: Float!
+  ratio: String
+  ratio1: Float!
+  ratio2: Float!
+  ratioMultiplier: Float!
+  reference: String
+  reportFxRate: Float!
+  reportFxRateView: Float!
+  reversedRatioMultiplier: Float!
+  secondPortfolio: Portfolio
+  security: Security
+  security2: Security
+  securityBaseTypeCode: String
+  securityCode: String
+  securityId: String
+  securityName: String
+  securityTypeCode: String
+  settlement: Exchange
+  settlementDate: String
+  settlementDateInEffective: String
+  settlementPlace: Settlement
+  settlementPlaceCode: String
+  status: String
+  swiftMessage: String
+  tags: String
+  tagsAsSet: [String]
+  tax: Float!
+  tax2: Float!
+  tax2InEffective: Float!
+  taxCashFlow: Float!
+  taxInEffective: Float!
+  taxType: TaxType
+  taxType2: TaxType
+  taxType2Code: String
+  taxTypeCode: String
+  terminationDate: String
+  totalCost: Float!
+  tradeAmount: Float!
+  tradeAmountBase: Float!
+  tradeAmountExAccruedInterestAndTax: Float!
+  tradeAmountExTaxCashflow: Float!
+  tradeAmountExtTax: Float!
+  tradeAmountInAccountCurrency: Float!
+  tradeAmountInEffective: Float!
+  tradeAmountInPortfolioCurrency: Float!
+  tradeAmountInPortfolioEffective: Float!
+  tradeOrder: Boolean!
+  tradeOrderType: Int!
+  tradeTime: String
+  tradeTimeString: String
+  tradeamountExAccruedInterest: Float!
+  transaction: Boolean!
+  transactionDate: String
+  transactionDateAndTimeInXMLFormat: String
+  transactionDateInEffective: String
+  transactionId: String
+  type: TransactionType
+  typeCode: String
+  typeName: String
+  unitPrice: Float!
+  unitPriceMultiplier: Float!
+  unitPriceView: Float!
+  valid: Boolean!
+  version: Int
+  yield: Float!
+}
+
+type TransactionCostData {
+  costTypeCode: String
+  costTypeValue: Float!
+}
+
+type TransactionCostType {
+  category: Int!
+  categoryGroup: Int!
+  id: Long
+  name: String
+  names: String
+  namesAsMap: Map_String_StringScalar
+  type: String
+  version: Int
+}
+
+input TransactionDTOInput {
+  "@Nullable Portfolio's account number, if transaction is directed to an account. Define AUTO to record the transactions to the account with the same currency as the transaction, if such an account is found, or to the default account of the portfolio, if suitable currency account is not found."
+  account: String
+  "@Nullable Exchange rate between trade currency and portfolio's account currency. Define AUTO to automatically use the transaction day's market data entry."
+  accountFxRate: String
+  "@Nullable Accrual (e.g. accrued income) in trade currency. Only applicable with transactions on securities of type FUND"
+  accrual: String
+  "@Nullable Accrued interest in trade currency. For bonds, the accrued interest can be set with \"?\", when the system calculates the accrued interest automatically. Define AUTO to automatically calculate the accrued interest"
+  accruedInterest: String
+  "@NotNull Number of units. Amount field only accepts the amount of decimals defined for the security type or as the block size of the security: if your file has more decimals in the amount, the amount is rounded to contain only accepted amount of decimals"
+  amount: String
+  "@Nullable \nISDAActualActual, ISMAActualActual, AFBActualActual, US30360, EU30360, Actual360, Actual365Fixed, IT30360, Actual366 (used if no security defined and its a deposit)"
+  basis: String
+  "@Nullable Coefficient calculated from the linked security's price and index base value. Affects trade amount same as unit price. Define AUTO to automatically calculate coefficient on the transaction date from the linked security and index base value."
+  coefficient: String
+  "@Nullable Define the break-down of costs as a list of transaction cost data with the syntax <type>=<value>"
+  compCost1: String
+  "@Nullable Define the break-down of costs as a list of transaction cost data with the syntax <type>=<value> (available from FA 2.6 onward).\nTypes are from defined transaction cost type. E.g. BROK=15,ADV=22."
+  compCost2: String
+  "@Nullable Fee in trade currency"
+  cost: String
+  "@Nullable Credit fee in trade currency"
+  cost2: String
+  "@Nullable Type of selected transaction cost type (available from FA 2.6 onward).\nValue is from defined transaction cost type's type code."
+  costType1: String
+  "@Nullable Type of selected transaction cost type (available from FA 2.6 onward).\nValue is from defined transaction cost type's type code."
+  costType2: String
+  "@Nullable Counter (use contact ID)"
+  counter: String
+  "@Nullable Counter portfolio (use portfolio code)"
+  counterPortfolio: String
+  "@NotNull Transaction's trade currency code"
+  currency: String
+  "@Nullable Description\/comment on the transaction"
+  description: String
+  "@Nullable External transaction ID. If left empty, an external ID is generated to the transaction. In addition, system defines an internal ID as well.\n"
+  extId: String
+  "@Nullable Exchange rate for the transaction."
+  fxRate: String
+  "@Nullable Whether the transaction should be marked as hidden. Define as a number:\n1 = Hidden\n0 = Not hidden (default)\n"
+  hidden: String
+  "@Nullable Internal transaction description"
+  intInfo: String
+  "@Nullable Use the exchange code \/ market place code"
+  marketPlace: String
+  "@Nullable yyyy-MM-dd (e.g. with deposits without securities)"
+  maturityDate: String
+  "@Nullable Booked exchange rate between trade currency and portfolio's report currency. Define AUTO to automatically use the original transaction day's market data entry"
+  origFxRate: String
+  "@Nullable Booked trade amount. Define AUTO to automatically calculate the booked trade amount by multiplying the amount with transaction day's market data entry "
+  origTradeAmount: String
+  "@Nullable yyyy-MM-dd"
+  origTransactionDate: String
+  "@Nullable Booked unit price in trade currency\n"
+  origUnitPrice: String
+  "@NotNull String (unique ID of the transaction's portfolio)"
+  parentPortfolio: String
+  "@Nullable yyyy-MM-dd"
+  paymentDate: String
+  "@Nullable Intraday priority of a transaction. -1,1,2,3...\nThe transaction with the lowest priority has the highest number defined in the priority field (0 is lower than 1 and -1 is lower than 0). The default priority is 0."
+  priority: String
+  "@Nullable E.g. 1:2 or 2:3.25 (used with e.g. splits). The first number is the number of units of security 1 and the second is the number of units of security 2."
+  ratio: String
+  "@Nullable Reference"
+  reference: String
+  "@Nullable Exchange rate between trade currency and portfolio's report currency. Define AUTO to automatically use the transaction day's market data entry."
+  reportFxRate: String
+  "@Nullable Security code of the transaction's security. Leave empty, if a cash transaction. In addition to security code, importing transactions is supported with ISIN code, trade code or update codes 1 through 3"
+  security: String
+  "@Nullable Security code of the removed security (e.g. in the exchange, the one that is replaced)"
+  security2: String
+  "@Nullable Based on transaction's security type which is configured in the system. Used to define the features of a transaction.\n"
+  securityType: String
+  "@Nullable yyyy-MM-dd."
+  settlementDate: String
+  "@Nullable Use the settlement code"
+  settlementPlace: String
+  "@NotNull Define as a code:\nOK = Accepted DEL = Deleted NF = Not finished\n"
+  status: String
+  "@Nullable Comma separated list of tags. Existing tags are not replaced unless existing tag is in the same group as the new tag."
+  tags: String
+  "@Nullable Tax in trade currency"
+  tax: String
+  "@Nullable Tax in trade currency"
+  tax2: String
+  "@Nullable Tax type of the transaction defined with the tax type code"
+  taxType: String
+  "@Nullable Tax type of the transaction defined with the tax type code"
+  taxType2: String
+  "@NotNull Value of the transaction in trade currency (i.e. money value of the transaction including costs, accrued interest etc."
+  tradeAmount: String
+  "@Nullable hh:mm:ss"
+  tradeTime: String
+  "@NotNull yyyy-MM-dd"
+  transactionDate: String
+  "@NotNull Type code (configured in the system). E.g. buy, sell etc."
+  type: String
+  "@NotNull Unit price is security currency (trade currency). Define AUTO to automatically use the transaction day's market data entry. For bonds, unit price can be set with % (e.g. 3.45%), when the system calculates the price according to YTM automatically."
+  unitPrice: String
+}
+
+type TransactionType {
+  COMMITMENT_TYPE_AMOUNT: Int!
+  COMMITMENT_TYPE_DIFFERENCE: Int!
+  COMMITMENT_TYPE_NONE: Int!
+  COMMITMENT_TYPE_PRICE: Int!
+  COMMITMENT_TYPE_TRADEAMOUNT: Int!
+  DATE_EFFECT_SETTLEMENT_DATE: Int!
+  DATE_EFFECT_TRANSACTION_DATE: Int!
+  PURCHASE_UNIT_PRICE_EFFECT_ADD: Int!
+  PURCHASE_UNIT_PRICE_EFFECT_ADD_FX: Int!
+  PURCHASE_UNIT_PRICE_EFFECT_ADD_FX_RECORD_ORIG: Int!
+  PURCHASE_UNIT_PRICE_EFFECT_ADD_RECORD_ORIG: Int!
+  PURCHASE_UNIT_PRICE_EFFECT_ADD_SEC: Int!
+  PURCHASE_UNIT_PRICE_EFFECT_ADD_SEC_RECORD_ORIG: Int!
+  PURCHASE_UNIT_PRICE_EFFECT_KEEP_ORIG_PURCHASE_PRICE: Int!
+  PURCHASE_UNIT_PRICE_EFFECT_KEEP_ORIG_PURCHASE_PRICE_AND_TIME: Int!
+  PURCHASE_UNIT_PRICE_EFFECT_KEEP_ORIG_PURCHASE_TIME: Int!
+  PURCHASE_UNIT_PRICE_EFFECT_NO_EFFECT: Int!
+  PURCHASE_UNIT_PRICE_EFFECT_REDUCE: Int!
+  PURCHASE_UNIT_PRICE_EFFECT_REDUCE_FX: Int!
+  PURCHASE_UNIT_PRICE_EFFECT_REDUCE_FX_RECORD_ORIG: Int!
+  PURCHASE_UNIT_PRICE_EFFECT_REDUCE_RECORD_ORIG: Int!
+  PURCHASE_UNIT_PRICE_EFFECT_REDUCE_SEC: Int!
+  PURCHASE_UNIT_PRICE_EFFECT_REDUCE_SEC_RECORD_ORIG: Int!
+  PURCHASE_UNIT_PRICE_PROFIT_EFFECT_NONE: Int!
+  PURCHASE_UNIT_PRICE_PROFIT_EFFECT_REAL: Int!
+  PURCHASE_UNIT_PRICE_PROFIT_EFFECT_UNREAL: Int!
+  REALIZED_PROFIT_EFFECT_NONE: Int!
+  REALIZED_PROFIT_EFFECT_REALIZE_PROFITS_LOSSES: Int!
+  REALIZED_PROFIT_EFFECT_REALIZE_PROFITS_LOSSES_CLOSING_OPEN: Int!
+  REALIZED_PROFIT_EFFECT_REALIZE_PROFITS_LOSSES_INDIRECTLY: Int!
+  REMOVE_SECURITY_BASED_ON_SECOND: Int!
+  REMOVE_SECURITY_EFFECT_NONE: Int!
+  REMOVE_SECURITY_REMOVE_2ND: Int!
+  REMOVE_SECURITY_REMOVE_2ND_ENTIRELY: Int!
+  amountEffect: Int!
+  auditableValues: LinkedHashMap_String_StringScalar
+  cashFlowEffect: Int!
+  commitment: Int!
+  commitmentTotal: Int!
+  commitmentType: Int!
+  cost1Effect: Int!
+  cost2Effect: Int!
+  costCategory: Int!
+  costCategoryGroup: Int!
+  costEffect: Int!
+  costFormulas: [CostFormula]
+  dateEffect: Int!
+  distribution: Int!
+  fifoEffect: Int!
+  groupByType: Int!
+  marketValueEffect: Int!
+  netCashflowEffect: Int!
+  paidInCapitalType: Int!
+  profitEffect: Int!
+  purchaseUnitPriceEffect: Int!
+  purchaseUnitPriceProfitEffect: Int!
+  ratioEffect: Int!
+  realizedProfitEffect: Int!
+  removeSecurityEffect: Int!
+  securityTypes: [SecurityType]
+  shortName: String
+  shortNames: String
+  shortNamesAsMap: Map_String_StringScalar
+  taxEffect: Int!
+  taxEffect2: Int!
+  typeCode: String
+  typeName: String
+  typeNames: String
+  typeNamesAsMap: Map_String_StringScalar
+  version: Int
+}
+
+"Built-in scalar for map-like structures"
+scalar TreeMap_LocalDate_GrouppedAnalyticsDTOScalar
+
+"Built-in scalar for map-like structures"
+scalar TreeMap_LocalDate_GrouppedAnalyticsSelectedDTOScalar
+
+"Unrepresentable type"
+scalar UNREPRESENTABLE

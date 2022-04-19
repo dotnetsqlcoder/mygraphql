@@ -1,0 +1,49 @@
+﻿
+query contact_information($id:String){
+  contacts(contactId:$id){
+    contactId
+    name
+    taxCountry {
+      name
+    }
+    juridical {
+      name
+    }
+    classification {
+      name
+    }
+    identity {
+      name
+    }
+    type
+    profile {
+      attributes {
+        attributeKey
+        id
+        stringValue
+      }
+    }
+   	portfolios {
+      id
+      name
+      shortName
+      accounts{
+        name
+        currency {
+          name
+        }
+        bic
+      }
+      portfolioReport{
+        accountBalance
+        portfolioReportItems {
+          securityName
+          exposure
+          marketValue
+          amount
+          valueChangeRelative
+        }
+      }
+    }
+  }
+}
