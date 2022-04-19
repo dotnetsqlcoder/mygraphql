@@ -1,0 +1,25 @@
+{
+  "schema": "schema.graphql",
+  "documents": "**/*.graphql",
+  "extensions": {
+    "strawberryShake": {
+      "name": "CitroneerGraphQlClient",
+      "namespace": "Demo.GraphQL",
+      "url": "https://citroneertest.fasolutions.com/graphql",
+      "dependencyInjection": true,
+
+      "emitGeneratedCode": true,
+      "razorComponents": false,
+      "records": {
+        "inputs": false,
+        "entities": false
+      },
+      "transportProfiles": [
+        {
+          "default": "Http",
+          "subscription": "WebSocket"
+        }
+      ]
+    }
+  }
+}
